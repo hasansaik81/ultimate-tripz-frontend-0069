@@ -1,7 +1,9 @@
+import Banner from "@/src/components/module/home/Banner";
+
 const page = () => {
   return (
     <div>
-      <p>Hello, page! yoyo</p>
+      <Banner />
     </div>
   );
 };
