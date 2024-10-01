@@ -1,7 +1,4 @@
-import { TPost } from "@/src/types";
-import Image from "next/image";
-import { FaAnglesUp, FaAngleDown, FaAnglesDown } from "react-icons/fa6";
-import { FaRegCommentAlt } from "react-icons/fa";
+import React from "react";
 import PostCard from "@/src/components/ui/PostCard";
 
 const page = async () => {
