@@ -11,8 +11,8 @@ import {
 } from "redux-persist";
 
 import storage from "redux-persist/lib/storage";
-import baseApi from "./api/baseApi.js";
-import authSlice from "./features/auth/authSlice.js";
+import baseApi from "./api/baseApi";
+import authSlice from "./features/auth/authSlice";
 
 const persistConfig = {
   key: "auth",

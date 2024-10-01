@@ -1,4 +1,6 @@
 "use client";
+import { useCurrentUser } from "@/src/redux/features/auth/authSlice";
+import { useAppSelector } from "@/src/redux/hooks";
 import { Input } from "@nextui-org/input";
 import { useRouter, useSearchParams } from "next/navigation";
 import Select from "react-dropdown-select";
@@ -41,6 +43,8 @@ const categoryOptions = [
 const Filter = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const user = useAppSelector(useCurrentUser);
+  console.log("user:", user);
 
   const handleSort = (key, value) => {
     const params = new URLSearchParams(searchParams.toString());

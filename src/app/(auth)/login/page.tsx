@@ -1,11 +1,26 @@
 "use client";
 import FormikInput from "@/src/components/formik/FormikInput";
+import { useLoginMutation } from "@/src/redux/features/auth";
+import { setUser, TUser } from "@/src/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/src/redux/hooks";
+import { verifyToken } from "@/src/utils/VerifyToken";
 import { Button } from "@nextui-org/button";
 import { Form, Formik } from "formik";
 
-const page = () => {
-  const handleSubmit = async (values) => {
-    console.log(values);
+type TSignInValue = {
+  email: string;
+  password: string;
+};
+
+const LoginPage = () => {
+  const [login] = useLoginMutation();
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = async (values: TSignInValue) => {
+    const res = await login(values).unwrap();
+    let user = verifyToken(res.token) as TUser;
+    user.name = res.data.name;
+    dispatch(setUser({ user: user, token: res.token }));
   };
 
   return (
@@ -52,4 +67,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default LoginPage;
