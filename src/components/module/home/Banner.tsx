@@ -7,7 +7,7 @@ const Banner = () => {
   return (
     <div className="flex gap-x-10 py-10 items-center">
       <div className="w-[50%] space-y-5">
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-6xl font-bold">
           Travel the world like never before and get better taste
         </h1>
         <h2 className="text-xl font-semibold">
@@ -26,8 +26,8 @@ const Banner = () => {
             <Image
               src={b1Img}
               alt="banner"
-              height={300}
-              width={300}
+              height={400}
+              width={400}
               className="rounded-2xl w-[350px] h-full object-cover"
             />
           </div>

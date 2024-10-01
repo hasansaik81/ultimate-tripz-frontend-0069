@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.heading {
+  @apply text-5xl font-bold leading-[72px];
+}
+.subHeading {
+  @apply uppercase font-medium text-lg;
+}

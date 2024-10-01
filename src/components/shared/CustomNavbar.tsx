@@ -42,7 +42,7 @@ const CustomNavbar = () => {
       {/* large */}
       <NavbarContent className="hidden sm:flex gap-4" justify="start">
         <NavbarBrand>
-          <p className="font-bold text-inherit">ACMEY</p>
+          <p className="font-bold text-inherit">Ultimate Tripz</p>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
