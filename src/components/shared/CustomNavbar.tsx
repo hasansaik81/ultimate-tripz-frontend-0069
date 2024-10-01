@@ -27,7 +27,7 @@ const menuItems = [
 const links = [
   {
     title: "Articles",
-    href: "#",
+    href: "articles",
     secure: false,
   },
   {
