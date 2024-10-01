@@ -24,6 +24,34 @@ const menuItems = [
   "Log Out",
 ];
 
+const links = [
+  {
+    title: "Articles",
+    href: "#",
+    secure: false,
+  },
+  {
+    title: "About us",
+    href: "#",
+    secure: false,
+  },
+  {
+    title: "Contact us",
+    href: "#",
+    secure: false,
+  },
+  {
+    title: "Profile",
+    href: "#",
+    secure: true,
+  },
+  {
+    title: "Dashboard",
+    href: "#",
+    secure: true,
+  },
+];
+
 const CustomNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
@@ -46,21 +74,15 @@ const CustomNavbar = () => {
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
-        </NavbarItem>
+        {links.map((item, index) => {
+          return (
+            <NavbarItem key={index}>
+              <Link color="foreground" href={item.href}>
+                {item.title}
+              </Link>
+            </NavbarItem>
+          );
+        })}
       </NavbarContent>
 
       <NavbarContent justify="end">
