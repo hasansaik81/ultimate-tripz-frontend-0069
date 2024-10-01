@@ -3,8 +3,15 @@ import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 
 import { siteConfig } from "@/src/config/site";
-import { fontSans } from "@/src/config/fonts";
 import { Providers } from "../lib/Providers";
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  weight: ["400", "500", "700", "900"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -32,7 +39,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head />
-      <body className={clsx("", fontSans.variable)}>
+      <body className={roboto.className}>
         <Providers>
           <main className="container mx-auto max-w-7xl">{children}</main>
         </Providers>

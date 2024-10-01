@@ -21,14 +21,14 @@ const Banner = () => {
         </h3>
       </div>
       <div className="w-[50%]">
-        <div className="">
+        <div className="space-y-5">
           <div className="flex justify-end">
             <Image
               src={b1Img}
               alt="banner"
               height={300}
               width={300}
-              className="rounded-2xl"
+              className="rounded-2xl w-[350px] h-full object-cover"
             />
           </div>
           <div className="">
@@ -37,7 +37,7 @@ const Banner = () => {
               alt="banner"
               height={300}
               width={300}
-              className="rounded-2xl"
+              className="rounded-2xl w-[350px] h-full object-cover"
             />
           </div>
         </div>
