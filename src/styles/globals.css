@@ -8,3 +8,7 @@
 .subHeading {
   @apply uppercase font-medium text-lg;
 }
+
+.dropdown-filter {
+  width: 200px !important;
+}
