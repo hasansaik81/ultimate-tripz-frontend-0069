@@ -87,12 +87,10 @@ const CustomNavbar = () => {
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+          <Link href="/login">Sign in</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="warning" href="#" variant="flat">
-            Sign Up
-          </Button>
+          <Link href="/registration">Sign up</Link>
         </NavbarItem>
       </NavbarContent>
       {/* small */}

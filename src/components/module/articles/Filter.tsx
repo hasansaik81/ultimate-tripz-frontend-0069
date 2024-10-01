@@ -41,7 +41,6 @@ const categoryOptions = [
 const Filter = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  console.log("searchParams-filter:", searchParams);
 
   const handleSort = (key, value) => {
     const params = new URLSearchParams(searchParams.toString());
