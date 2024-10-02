@@ -1,5 +1,7 @@
 "use client";
-import { Button } from "@nextui-org/button";
+import { useState, useEffect } from "react";
+import { useCurrentUser } from "@/src/redux/features/auth/authSlice";
+import { useAppSelector } from "@/src/redux/hooks";
 import { Link } from "@nextui-org/link";
 import {
   Navbar,
@@ -10,7 +12,8 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
-import { useState } from "react";
+import { Button } from "@nextui-org/button";
+
 const menuItems = [
   "Profile",
   "Dashboard",
@@ -53,7 +56,20 @@ const links = [
 ];
 
 const CustomNavbar = () => {
+  const user = useAppSelector(useCurrentUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure component is mounted before rendering user-specific content
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Return nothing or a loading spinner if needed, until the component is mounted
+    return null;
+  }
+
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className="sm:hidden" justify="start">
@@ -75,6 +91,7 @@ const CustomNavbar = () => {
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {links.map((item, index) => {
+          if (item.secure && !user) return null;
           return (
             <NavbarItem key={index}>
               <Link color="foreground" href={item.href}>
@@ -86,13 +103,17 @@ const CustomNavbar = () => {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="/login">Sign in</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link href="/registration">Sign up</Link>
-        </NavbarItem>
+        {!user ? (
+          <NavbarItem className="hidden lg:flex">
+            <Link href="/login">Sign in</Link>
+          </NavbarItem>
+        ) : (
+          <NavbarItem className="hidden lg:flex">
+            <Button>Logout</Button>
+          </NavbarItem>
+        )}
       </NavbarContent>
+
       {/* small */}
       <NavbarMenu>
         {menuItems.map((item, index) => (

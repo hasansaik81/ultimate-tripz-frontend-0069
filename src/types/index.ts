@@ -19,3 +19,21 @@ export interface TPost {
   updatedAt: Date;
   __v: number;
 }
+
+export interface TPopularPost {
+  _id: string;
+  title: string;
+  content: string;
+  tags: string;
+  upVotes: string[];
+  author: TPostAuthor;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+export interface TPostAuthor {
+  _id: string;
+  name: string;
+  avatar: string;
+}

@@ -11,7 +11,7 @@ type TPostCard = {
 const PostCard = ({ data }: TPostCard) => {
   return (
     <div>
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-2 gap-10">
         {data.map((item: TPost) => {
           return (
             <div key={item._id} className="border rounded-2xl">
@@ -20,7 +20,7 @@ const PostCard = ({ data }: TPostCard) => {
                 alt="banner"
                 height={300}
                 width={400}
-                className="rounded-2xl object-cover"
+                className="rounded-2xl object-cover w-full"
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold">{item.title}</h3>
