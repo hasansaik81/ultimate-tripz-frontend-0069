@@ -18,6 +18,10 @@ import Textarea from "@/src/components/formik/Textarea";
 import { Button } from "@nextui-org/button";
 import { useAppSelector } from "@/src/redux/hooks";
 import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
+import CustomPopover from "@/src/components/ui/CustomPopover";
+import { HiDotsVertical } from "react-icons/hi";
+import { FiEdit3 } from "react-icons/fi";
+import { MdDeleteOutline } from "react-icons/md";
 
 interface TProps {
   params: {
@@ -32,7 +36,6 @@ const PostDetails = ({ params }: TProps) => {
   const [createComment] = usePostCommentMutation();
 
   const user = useAppSelector(useCurrentUser) as TUser;
-  console.log("user:", user);
 
   const onSubmit = async (values) => {
     console.log(values);
@@ -105,19 +108,38 @@ const PostDetails = ({ params }: TProps) => {
                   key={item?._id}
                   className="border rounded-xl p-5 bg-slate-900"
                 >
-                  <div className="flex items-center gap-5 mb-4">
-                    <Image
-                      src={item.userId.avatar}
-                      height={80}
-                      width={80}
-                      alt={item.userId.name}
-                      className="rounded-full size-[40px] object-cover"
-                    />
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-5 mb-4">
+                      <Image
+                        src={item.userId.avatar}
+                        height={80}
+                        width={80}
+                        alt={item.userId.name}
+                        className="rounded-full size-[40px] object-cover"
+                      />
+                      <div>
+                        <Link href={item.userId._id} className="font-bold">
+                          {item?.userId.name}
+                        </Link>
+                        <p>{formatDateTime(item.createdAt)}</p>
+                      </div>
+                    </div>
                     <div>
-                      <Link href={item.userId._id} className="font-bold">
-                        {item?.userId.name}
-                      </Link>
-                      <p>{formatDateTime(item.createdAt)}</p>
+                      <CustomPopover
+                        icon={true}
+                        title={
+                          <>
+                            <HiDotsVertical />
+                          </>
+                        }
+                      >
+                        <Button className="w-[100px] my-1">
+                          <FiEdit3 /> Edit
+                        </Button>
+                        <Button className="w-[100px] my-1">
+                          <MdDeleteOutline /> Delete
+                        </Button>
+                      </CustomPopover>
                     </div>
                   </div>
                   <p>{item?.feedback}</p>
