@@ -17,8 +17,33 @@ const CommentApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["Comment"],
     }),
+    updateComment: builder.mutation({
+      query: ({ id, commentInfo }) => {
+        console.log(id, commentInfo);
+        return {
+          url: `/comment/update/${id}`,
+          method: "PUT",
+          body: commentInfo,
+        };
+      },
+      invalidatesTags: ["Comment"],
+    }),
+    deleteComment: builder.mutation({
+      query: (id) => {
+        console.log("id", id);
+        return {
+          url: `/comment/delete/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["Comment"],
+    }),
   }),
 });
 
-export const { useGetCommentsByPostIdQuery, usePostCommentMutation } =
-  CommentApi;
+export const {
+  useGetCommentsByPostIdQuery,
+  usePostCommentMutation,
+  useDeleteCommentMutation,
+  useUpdateCommentMutation,
+} = CommentApi;
