@@ -61,3 +61,13 @@ export interface TPostAuthor {
   name: string;
   avatar: string;
 }
+
+export interface TComment {
+  _id: string;
+  postId: string;
+  userId: TPostAuthor;
+  feedback: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
