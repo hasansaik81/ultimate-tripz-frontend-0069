@@ -5,7 +5,10 @@ const postApi = baseApi.injectEndpoints({
     getPopularPosts: builder.query({
       query: () => "/post/popular",
     }),
+    getPostDetails: builder.query({
+      query: (id) => `/post/single-post/${id}`,
+    }),
   }),
 });
 
-export const { useGetPopularPostsQuery } = postApi;
+export const { useGetPopularPostsQuery, useGetPostDetailsQuery } = postApi;

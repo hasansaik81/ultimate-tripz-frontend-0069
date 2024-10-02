@@ -1,11 +1,10 @@
-import { TPost } from "@/src/types";
 import { FaAnglesDown } from "react-icons/fa6";
-import { TUpVote } from "./UpVote";
+import { TVoteProps } from "./UpVote";
 
-const DownVote = ({ data }: TUpVote) => {
+const DownVote = ({ votes, id }: TVoteProps) => {
   return (
-    <button className="flex items-center gap-2 border-r w-full p-2 justify-center">
-      <FaAnglesDown /> {data?.downVotes?.length}
+    <button className="flex items-center gap-2 p-2">
+      <FaAnglesDown /> {votes.length}
     </button>
   );
 };

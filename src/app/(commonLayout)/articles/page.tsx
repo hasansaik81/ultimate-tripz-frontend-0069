@@ -3,13 +3,11 @@ import PostCard from "@/src/components/ui/PostCard";
 import Filter from "@/src/components/module/articles/Filter";
 import Sidebar from "@/src/components/module/articles/Sidebar";
 
-const page = async ({ searchParams }) => {
+const page = async ({ searchParams }: any) => {
   const res = await fetch("http://localhost:5000/api/post/all-posts");
   const data = await res.json();
 
   const params = new URLSearchParams(searchParams);
-
-  console.log("searchParams:", params.get("searchTerm"));
   return (
     <div className="flex gap-10">
       <div className="w-[70%]">

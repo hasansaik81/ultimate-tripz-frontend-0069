@@ -27,8 +27,12 @@ const PostCard = ({ data }: TPostCard) => {
                 <p>{item.content.slice(0, 90)}...</p>
               </div>
               <div className="flex items-center justify-between border-t">
-                <UpVote data={item} />
-                <DownVote data={item} />
+                <div className="border-r w-full flex justify-center">
+                  <UpVote votes={item.upVotes} id={item._id} />
+                </div>
+                <div className="border-r w-full flex justify-center">
+                  <DownVote votes={item.downVotes} id={item._id} />
+                </div>
                 <p className="flex items-center gap-2 w-full p-2 justify-center">
                   <FaRegCommentAlt /> {item.commentsCount}
                 </p>

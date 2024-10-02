@@ -1,12 +1,12 @@
-import { TPost } from "@/src/types";
 import { FaAnglesUp } from "react-icons/fa6";
-export type TUpVote = {
-  data: TPost;
+export type TVoteProps = {
+  votes: string[];
+  id: string;
 };
-const UpVote = ({ data }: TUpVote) => {
+const UpVote = ({ votes, id }: TVoteProps) => {
   return (
-    <button className="flex items-center gap-2 border-r w-full p-2 justify-center">
-      <FaAnglesUp /> {data?.upVotes?.length}
+    <button className="flex items-center gap-2 p-2">
+      <FaAnglesUp /> {votes.length}
     </button>
   );
 };
