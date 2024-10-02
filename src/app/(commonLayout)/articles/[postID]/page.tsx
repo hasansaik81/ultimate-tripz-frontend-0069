@@ -4,9 +4,12 @@ import UpVote from "@/src/components/module/articles/UpVote";
 import { useGetCommentsByPostIdQuery } from "@/src/redux/features/comment";
 import { useGetPostDetailsQuery } from "@/src/redux/features/post";
 import { TComment, TPostDetails } from "@/src/types";
+import { formatDateTime } from "@/src/utils/date";
 import Image from "next/image";
 import Link from "next/link";
 import { FaRegCommentAlt } from "react-icons/fa";
+import { LiaUserEditSolid } from "react-icons/lia";
+import { IoIosTimer } from "react-icons/io";
 
 interface TProps {
   params: {
@@ -22,10 +25,18 @@ const PostDetails = ({ params }: TProps) => {
     return <p>Loading...</p>;
   }
   return (
-    <div>
+    <div className="py-10">
       <div className="flex gap-x-10">
         <div>
           <h2 className="text-2xl font-bold">{postInfo?.title}</h2>
+          <div className="flex items-center gap-5">
+            <p className="flex items-center gap-x-2">
+              <LiaUserEditSolid /> {postInfo.author.name}
+            </p>
+            <p className="flex items-center gap-x-2">
+              <IoIosTimer /> {formatDateTime(postInfo.createdAt)}
+            </p>
+          </div>
           <p className="my-5">{postInfo?.content}</p>
         </div>
         <div>
@@ -61,13 +72,7 @@ const PostDetails = ({ params }: TProps) => {
                     <Link href={item.userId._id} className="font-bold">
                       {item?.userId.name}
                     </Link>
-                    <p>
-                      {new Date(item.createdAt).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </p>
+                    <p>{formatDateTime(item.createdAt)}</p>
                   </div>
                 </div>
                 <p>{item?.feedback}</p>

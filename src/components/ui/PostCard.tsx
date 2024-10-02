@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FaRegCommentAlt } from "react-icons/fa";
 import UpVote from "../module/articles/UpVote";
 import DownVote from "../module/articles/DownVote";
+import Link from "next/link";
 
 type TPostCard = {
   data: TPost[];
@@ -23,7 +24,12 @@ const PostCard = ({ data }: TPostCard) => {
                 className="rounded-2xl object-cover w-full"
               />
               <div className="p-4">
-                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <Link
+                  href={`/articles/${item._id}`}
+                  className="text-lg font-semibold"
+                >
+                  {item.title}
+                </Link>
                 <p>{item.content.slice(0, 90)}...</p>
               </div>
               <div className="flex items-center justify-between border-t">
