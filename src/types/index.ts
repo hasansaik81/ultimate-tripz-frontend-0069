@@ -13,7 +13,7 @@ export interface TPost {
   upVotes: any[];
   downVotes: any[];
   commentsCount: number;
-  author: null;
+  author: TPostAuthor;
   category: string;
   createdAt: Date;
   updatedAt: Date;

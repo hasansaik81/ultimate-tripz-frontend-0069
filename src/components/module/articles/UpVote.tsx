@@ -5,7 +5,7 @@ export type TVoteProps = {
 };
 const UpVote = ({ votes, id }: TVoteProps) => {
   return (
-    <button className="flex items-center gap-2 p-2">
+    <button className="flex items-center justify-center gap-2 p-2 w-full">
       <FaAnglesUp /> {votes.length}
     </button>
   );

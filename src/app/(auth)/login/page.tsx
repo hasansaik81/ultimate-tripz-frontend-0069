@@ -20,6 +20,7 @@ const LoginPage = () => {
     const res = await login(values).unwrap();
     let user = verifyToken(res.token) as TUser;
     user.name = res.data.name;
+    user.avatar = res.data.avatar;
     dispatch(setUser({ user: user, token: res.token }));
   };
 

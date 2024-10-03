@@ -3,7 +3,7 @@ import { TVoteProps } from "./UpVote";
 
 const DownVote = ({ votes, id }: TVoteProps) => {
   return (
-    <button className="flex items-center gap-2 p-2">
+    <button className="flex items-center justify-center w-full gap-2 p-2">
       <FaAnglesDown /> {votes.length}
     </button>
   );
