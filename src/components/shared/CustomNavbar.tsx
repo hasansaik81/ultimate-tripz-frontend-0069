@@ -45,7 +45,7 @@ const links = [
   },
   {
     title: "Profile",
-    href: "#",
+    href: "/profile",
     secure: true,
   },
   {

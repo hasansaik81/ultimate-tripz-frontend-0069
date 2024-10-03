@@ -71,3 +71,30 @@ export interface TComment {
   updatedAt: string;
   __v: number;
 }
+
+export interface TUserDetails {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+  status: string;
+  avatar: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  following: TUserFollowing[];
+  followers: TUserFollower[];
+}
+
+export interface TUserFollowing {
+  _id: string;
+  name: string;
+  avatar: string;
+}
+
+export interface TUserFollower {
+  _id: string;
+  name: string;
+  avatar: string;
+}
