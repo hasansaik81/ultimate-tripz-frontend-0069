@@ -5,7 +5,7 @@ import b3Img from "@/src/assets/banner/b3.webp";
 
 const Banner = () => {
   return (
-    <div className="flex gap-x-10 py-10 items-center">
+    <div className="flex light:text-green-400 dark:bg-green-500 gap-x-10 py-10 items-center">
       <div className="w-[50%] space-y-5">
         <h1 className="text-6xl font-bold">
           Travel the world like never before and get better taste
