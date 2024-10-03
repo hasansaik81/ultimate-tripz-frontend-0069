@@ -11,6 +11,10 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 import { useGetPostByAuthorQuery } from "@/src/redux/features/post";
 import PostCard from "@/src/components/ui/PostCard";
+import { useState } from "react";
+import CustomModal from "@/src/components/ui/CustomModal";
+import Link from "next/link";
+import { Button } from "@nextui-org/button";
 
 const page = () => {
   const user = useAppSelector(useCurrentUser) as TUser;
@@ -19,9 +23,11 @@ const page = () => {
   const userDetails = data?.data as TUserDetails;
   const { data: userPosts } = useGetPostByAuthorQuery(userDetails?._id);
   const userAllPosts = userPosts?.data;
-  console.log(userAllPosts);
+  const [isFollowerModalOpen, setIsFollowerModalOpen] = useState(false);
+  const [isFollowingModalOpen, setIsFollowingModalOpen] = useState(false);
+  console.log(userDetails);
   return (
-    <div>
+    <>
       {/* cover */}
       <div className="relative">
         <Image
@@ -54,8 +60,12 @@ const page = () => {
         <p>{userDetails?.address}</p>
         <p>Joined {formatDateTime(userDetails?.createdAt)}</p>
         <div className="flex items-center gap-5">
-          <button>{userDetails?.following.length} Following</button>
-          <button>{userDetails?.followers.length} Followers</button>
+          <button onClick={() => setIsFollowingModalOpen(true)}>
+            {userDetails?.following.length} Following
+          </button>
+          <button onClick={() => setIsFollowerModalOpen(true)}>
+            {userDetails?.followers.length} Followers
+          </button>
         </div>
         <hr />
         <div>
@@ -63,7 +73,67 @@ const page = () => {
           <PostCard data={userAllPosts} />
         </div>
       </div>
-    </div>
+      <CustomModal
+        isOpen={isFollowingModalOpen}
+        onClose={() => setIsFollowingModalOpen(false)}
+        actionButtonTitle="Delete"
+        footer={false}
+        title="Following"
+      >
+        <div className="">
+          {userDetails?.following?.map((item) => {
+            return (
+              <div
+                key={item?._id}
+                className="flex items-center justify-between"
+              >
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={item.avatar}
+                    alt="cover"
+                    height={60}
+                    width={60}
+                    className="size-[60px] object-cover rounded-full"
+                  />
+                  <Link href={`/profile/${item._id}`}> {item?.name}</Link>
+                </div>
+                <Button>Unfollow</Button>
+              </div>
+            );
+          })}
+        </div>
+      </CustomModal>
+      <CustomModal
+        isOpen={isFollowerModalOpen}
+        onClose={() => setIsFollowerModalOpen(false)}
+        actionButtonTitle="Delete"
+        footer={false}
+        title="Followers"
+      >
+        <div className="">
+          {userDetails?.followers?.map((item) => {
+            return (
+              <div
+                key={item?._id}
+                className="flex items-center justify-between"
+              >
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={item.avatar}
+                    alt="cover"
+                    height={60}
+                    width={60}
+                    className="size-[60px] object-cover rounded-full"
+                  />
+                  <Link href={`/profile/${item._id}`}> {item?.name}</Link>
+                </div>
+                <Button>Follow back</Button>
+              </div>
+            );
+          })}
+        </div>
+      </CustomModal>
+    </>
   );
 };
 

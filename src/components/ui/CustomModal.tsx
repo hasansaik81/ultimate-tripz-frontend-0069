@@ -11,7 +11,7 @@ type CustomModalProps = {
   isOpen: boolean;
   footer?: boolean;
   onClose: () => void;
-  onAction: () => void;
+  onAction?: () => void;
   children: ReactNode;
   actionButtonTitle?: string;
   title?: string;
