@@ -15,7 +15,7 @@ const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Comment"],
+  tagTypes: ["Comment", "Post"],
   endpoints: () => ({}),
 });
 

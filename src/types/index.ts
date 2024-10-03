@@ -131,3 +131,18 @@ export type TUser = {
   isDeleted: boolean;
   role?: TRole;
 };
+
+// error
+export interface TErrorMessage {
+  path: string;
+  message: string;
+}
+
+export interface TErrorResponse {
+  status: number;
+  data: {
+    success: boolean;
+    message: string;
+    errorMessages: TErrorMessage[];
+  };
+}
