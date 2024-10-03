@@ -13,6 +13,7 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
+import { ThemeSwitch } from "../theme-switch";
 
 const menuItems = [
   "Profile",
@@ -111,6 +112,9 @@ const CustomNavbar = () => {
             <Button>Logout</Button>
           </NavbarItem>
         )}
+        <NavbarItem className="hidden lg:flex">
+          <ThemeSwitch />
+        </NavbarItem>
       </NavbarContent>
 
       {/* small */}
