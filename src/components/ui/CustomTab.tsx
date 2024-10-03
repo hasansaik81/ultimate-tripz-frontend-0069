@@ -15,10 +15,10 @@ type TProps = {
 const CustomTab = ({ tabs }: TProps) => {
   return (
     <div className="flex w-full flex-col">
-      <Tabs aria-label="Dynamic tabs" items={tabs}>
+      <Tabs fullWidth aria-label="Dynamic tabs" items={tabs}>
         {(item) => (
           <Tab key={item.id} title={item.label}>
-            <Card>
+            <Card shadow="none">
               <CardBody>{item.content}</CardBody>
             </Card>
           </Tab>

@@ -1,21 +1,29 @@
 import FormikInput from "@/src/components/formik/FormikInput";
 import CustomModal from "@/src/components/ui/CustomModal";
 import { TUserDetails } from "@/src/types";
-import { Button } from "@nextui-org/button";
-import { Form, Formik } from "formik";
 import { useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
+import EditProfileDetails from "./EditProfileDetails";
+import ChangePassword from "./ChangePassword";
+import CustomTab from "@/src/components/ui/CustomTab";
 type TProps = {
   userData: TUserDetails;
 };
 
 const EditProfile = ({ userData }: TProps) => {
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
-  const initialValues = {
-    name: userData?.name || "",
-    phone: userData?.phone || "",
-    address: userData?.address || "",
-  };
+  const tabs = [
+    {
+      id: "details",
+      label: "Edit details",
+      content: <EditProfileDetails userData={userData} />,
+    },
+    {
+      id: "password",
+      label: "Change password",
+      content: <ChangePassword />,
+    },
+  ];
   return (
     <div>
       <button
@@ -32,19 +40,7 @@ const EditProfile = ({ userData }: TProps) => {
         title="Edit profile"
       >
         <div className="">
-          <Formik
-            initialValues={initialValues}
-            onSubmit={(values) => console.log(values)}
-          >
-            <Form className="">
-              <div className="space-y-5 pb-5">
-                <FormikInput name="name" label="Name" />
-                <FormikInput name="address" label="Address" />
-                <FormikInput name="phone" label="Phone" />
-                <Button type="submit">Update</Button>
-              </div>
-            </Form>
-          </Formik>
+          <CustomTab tabs={tabs} />
         </div>
       </CustomModal>
     </div>
