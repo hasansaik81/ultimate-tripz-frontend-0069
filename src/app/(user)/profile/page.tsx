@@ -8,13 +8,13 @@ import { TUserDetails } from "@/src/types";
 import { formatDateTime } from "@/src/utils/date";
 import Image from "next/image";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import { FaRegEdit } from "react-icons/fa";
 import { useGetPostByAuthorQuery } from "@/src/redux/features/post";
 import PostCard from "@/src/components/ui/PostCard";
 import { useState } from "react";
 import CustomModal from "@/src/components/ui/CustomModal";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
+import EditProfile from "./_components/EditProfile";
 
 const page = () => {
   const user = useAppSelector(useCurrentUser) as TUser;
@@ -44,10 +44,7 @@ const page = () => {
           width={300}
           className="object-cover rounded-full size-[250px] border-2 absolute -bottom-[125px] left-10"
         />
-        <button className="absolute right-5 bottom-3 flex items-center gap-2 font-semibold">
-          <FaRegEdit />
-          Edit profile
-        </button>
+        <EditProfile userData={userDetails} />
       </div>
       <div className="mt-[125px] px-10 py-5 space-y-5">
         <div className="flex items-center gap-5">
