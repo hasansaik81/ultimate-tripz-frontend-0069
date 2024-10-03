@@ -1,7 +1,11 @@
 "use client";
 import { useGetUserInfoQuery } from "@/src/redux/features/user";
 
-const DaynamicProfile = ({ params }) => {
+type TProps = {
+  params: any;
+};
+
+const DaynamicProfile = ({ params }: TProps) => {
   console.log(params);
   const { data } = useGetUserInfoQuery("");
   console.log(data);

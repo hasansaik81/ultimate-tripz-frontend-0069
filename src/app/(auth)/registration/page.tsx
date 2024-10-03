@@ -1,23 +1,46 @@
 "use client";
 import FormikInput from "@/src/components/formik/FormikInput";
 import { Button } from "@nextui-org/button";
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
+
+// Define form values type
+interface FormValues {
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  address: string;
+  avatar: File | null;
+}
+
+const initialValues: FormValues = {
+  name: "",
+  email: "",
+  password: "",
+  phone: "",
+  address: "",
+  avatar: null,
+};
 
 const page = () => {
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (
+    values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>
+  ) => {
     console.log(values);
+    setSubmitting(false); // Stops the loading state after submission
   };
 
   return (
     <div className="flex items-center justify-center">
-      <div className=" bg-slate-950 p-8 m-5 rounded-lg shadow-lg w-full max-w-md space-y-6">
+      <div className="bg-slate-950 p-8 m-5 rounded-lg shadow-lg w-full max-w-md space-y-6">
         {/* Registration Header */}
         <h1 className="text-2xl font-bold text-center mb-6">
           Create your account
         </h1>
 
         {/* Formik Form */}
-        <Formik initialValues={{}} onSubmit={handleSubmit}>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           {({ setFieldValue }) => (
             <Form className="space-y-5">
               {/* Name */}
@@ -47,7 +70,10 @@ const page = () => {
                   id="avatar"
                   type="file"
                   className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                  onChange={(e) => setFieldValue("avatar", e.target.files[0])}
+                  onChange={(e) => {
+                    const file = e.target.files ? e.target.files[0] : null;
+                    setFieldValue("avatar", file);
+                  }}
                 />
               </div>
 

@@ -1,7 +1,6 @@
 "use client";
 import { useCurrentUser } from "@/src/redux/features/auth/authSlice";
 import { useAppSelector } from "@/src/redux/hooks";
-import { Input } from "@nextui-org/input";
 import { useRouter, useSearchParams } from "next/navigation";
 import Select from "react-dropdown-select";
 
@@ -12,7 +11,7 @@ const sortOptions = [
   },
   {
     value: "vote",
-    label: "Sort by most votes",
+    label: "Sort by votes",
   },
 ];
 const tagOptions = [
@@ -25,7 +24,6 @@ const tagOptions = [
     label: "Premium",
   },
 ];
-
 const categoryOptions = [
   { value: "adventure", label: "Adventure" },
   { value: "eco-tourism", label: "Eco-tourism" },
@@ -46,7 +44,7 @@ const Filter = () => {
   const user = useAppSelector(useCurrentUser);
   console.log("user:", user);
 
-  const handleSort = (key, value) => {
+  const handleSort = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set(key, value);
     router.push(`/articles?${params.toString()}`);
@@ -60,6 +58,7 @@ const Filter = () => {
         placeholder="Sort"
         options={sortOptions}
         onChange={(values) => handleSort("sort", values[0].value)}
+        values={[]}
       />
       <Select
         closeOnScroll
@@ -67,6 +66,7 @@ const Filter = () => {
         placeholder="Select category"
         options={categoryOptions}
         onChange={(values) => handleSort("category", values[0].value)}
+        values={[]}
       />
       <Select
         closeOnScroll
@@ -74,6 +74,7 @@ const Filter = () => {
         placeholder="Select tag"
         options={tagOptions}
         onChange={(values) => handleSort("tag", values[0].value)}
+        values={[]}
       />
       <input
         onChange={(e) => handleSort("searchTerm", e.target.value)}
@@ -81,12 +82,6 @@ const Filter = () => {
         placeholder="Query"
         className="h-[35px] px-3 w-full border focus-visible:outline-none"
       />
-      {/* <Input
-        onChange={(e) => handleSort("searchTerm", e.target.value)}
-        type="text"
-        label="Search"
-        size="sm"
-      /> */}
     </div>
   );
 };

@@ -12,7 +12,9 @@ const page = async ({ searchParams }: any) => {
     tag: params.get("tag") || "",
   }).toString();
 
-  const res = await fetch(`http://localhost:5000/api/post/all-posts?${query}`);
+  const res = await fetch(
+    `https://ultimate-tripz.vercel.app/api/post/all-posts?${query}`
+  );
   const data = await res.json();
 
   return (
