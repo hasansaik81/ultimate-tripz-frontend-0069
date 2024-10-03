@@ -79,6 +79,7 @@ export interface TUserDetails {
   phone: string;
   role: string;
   status: string;
+  address?: string;
   avatar: string;
   createdAt: string;
   updatedAt: string;

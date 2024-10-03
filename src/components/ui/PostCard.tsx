@@ -13,7 +13,7 @@ const PostCard = ({ data }: TPostCard) => {
   return (
     <div>
       <div className="grid grid-cols-2 gap-10">
-        {data.map((item: TPost) => {
+        {data?.map((item: TPost) => {
           return (
             <div key={item._id} className="border rounded-2xl">
               <Image
