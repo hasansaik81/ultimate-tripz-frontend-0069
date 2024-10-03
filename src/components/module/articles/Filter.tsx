@@ -17,8 +17,8 @@ const sortOptions = [
 ];
 const tagOptions = [
   {
-    value: "basic",
-    label: "Basic",
+    value: "regular",
+    label: "Regular",
   },
   {
     value: "premium",
@@ -53,7 +53,7 @@ const Filter = () => {
   };
 
   return (
-    <div className="flex justify-between items-center py-10 gap-10">
+    <div className="flex justify-between items-center py-10 gap-5">
       <Select
         closeOnScroll
         className="dropdown-filter"
@@ -75,12 +75,18 @@ const Filter = () => {
         options={tagOptions}
         onChange={(values) => handleSort("tag", values[0].value)}
       />
-      <Input
+      <input
+        onChange={(e) => handleSort("searchTerm", e.target.value)}
+        type="text"
+        placeholder="Query"
+        className="h-[35px] px-3 w-full border focus-visible:outline-none"
+      />
+      {/* <Input
         onChange={(e) => handleSort("searchTerm", e.target.value)}
         type="text"
         label="Search"
         size="sm"
-      />
+      /> */}
     </div>
   );
 };
