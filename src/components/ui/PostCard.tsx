@@ -11,9 +11,10 @@ import { formatDateTime } from "@/src/utils/date";
 
 type TPostCard = {
   data: TPost[];
+  profile?: boolean;
 };
 
-const PostCard = ({ data }: TPostCard) => {
+const PostCard = ({ data, profile = false }: TPostCard) => {
   const user = useAppSelector(useCurrentUser) as TUser;
   console.log(user);
   return (
@@ -22,21 +23,25 @@ const PostCard = ({ data }: TPostCard) => {
         {data?.map((item: TPost) => {
           return (
             <div key={item._id} className="space-y-5">
-              <div>
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={item?.author?.avatar}
-                    alt="author"
-                    height={80}
-                    width={80}
-                    className="size-[50px] object-cover rounded-full"
-                  />
-                  <div className="flex flex-col justify-between">
-                    <p className="text-lg font-semibold">{item.author.name}</p>
-                    <p>{formatDateTime(item.createdAt)}</p>
+              {!profile && (
+                <div>
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src={item?.author?.avatar}
+                      alt="author"
+                      height={80}
+                      width={80}
+                      className="size-[50px] object-cover rounded-full"
+                    />
+                    <div className="flex flex-col justify-between">
+                      <p className="text-lg font-semibold">
+                        {item.author.name}
+                      </p>
+                      <p>{formatDateTime(item.createdAt)}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
               <Link href={`/articles/${item._id}`}>
                 <Image
                   src={item.images[0]}

@@ -25,6 +25,9 @@ import { MdDeleteOutline } from "react-icons/md";
 import { useState } from "react";
 import CustomModal from "@/src/components/ui/CustomModal";
 
+type TPostComment = {
+  feedback: string;
+};
 interface TProps {
   params: {
     postID: string;
@@ -38,14 +41,14 @@ const PostDetails = ({ params }: TProps) => {
   const [createComment] = usePostCommentMutation();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [commentId, setCommentId] = useState("");
-  const [selectedComment, setSelectComment] = useState({});
+  const [commentId, setCommentId] = useState<string>("");
+  const [selectedComment, setSelectComment] = useState<TComment | null>(null);
   const [deleteComment] = useDeleteCommentMutation();
   const [updateComment] = useUpdateCommentMutation();
 
   const user = useAppSelector(useCurrentUser) as TUser;
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: TPostComment) => {
     const commentData = {
       postId: postInfo._id,
       userId: user.id,
@@ -60,7 +63,10 @@ const PostDetails = ({ params }: TProps) => {
       console.log(error);
     }
   };
-  const handleUpdateComment = async (values) => {
+  const handleUpdateComment = async (values: TPostComment) => {
+    if (!selectedComment) {
+      return;
+    }
     const commentData = {
       postId: postInfo._id,
       userId: user.id,
@@ -114,14 +120,14 @@ const PostDetails = ({ params }: TProps) => {
         </div>
       </div>
       <div className="">
-        <div className="flex items-center gap-x-5">
-          <UpVote votes={postInfo.upVotes} id={postInfo._id} />{" "}
-          <DownVote votes={postInfo.downVotes} id={postInfo._id} />
-          <p className="flex items-center gap-2 p-2">
-            <FaRegCommentAlt /> {postInfo.commentsCount}
-          </p>
-        </div>
         <div className="lg:w-[50%] mt-5">
+          <div className="lg:w-1/2 flex items-center gap-x-5">
+            <UpVote votes={postInfo.upVotes} id={postInfo._id} />{" "}
+            <DownVote votes={postInfo.downVotes} id={postInfo._id} />
+            <p className="flex items-center w-full justify-center gap-2 p-2">
+              <FaRegCommentAlt /> {postInfo.commentsCount}
+            </p>
+          </div>
           <div className="py-10">
             <Formik initialValues={{ feedback: "" }} onSubmit={onSubmit}>
               <Form className="space-y-5">
@@ -198,11 +204,12 @@ const PostDetails = ({ params }: TProps) => {
       <CustomModal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
-        onAction={() => handleUpdateComment("")}
         footer={false}
       >
         <Formik
-          initialValues={{ feedback: selectedComment.feedback }}
+          initialValues={{
+            feedback: selectedComment ? selectedComment.feedback : "",
+          }}
           onSubmit={handleUpdateComment}
         >
           <Form className="space-y-5 pt-10 pb-5">

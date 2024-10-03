@@ -29,13 +29,8 @@ const menuItems = [
 
 const links = [
   {
-    title: "Articles",
-    href: "articles",
-    secure: false,
-  },
-  {
     title: "About us",
-    href: "#",
+    href: "/about-us",
     secure: false,
   },
   {
@@ -80,13 +75,17 @@ const CustomNavbar = () => {
 
       <NavbarContent className="sm:hidden pr-3" justify="start">
         <NavbarBrand>
-          <p className="font-bold text-inherit">ACMEY</p>
+          <Link href="/" className="font-bold text-inherit">
+            ACMEY
+          </Link>
         </NavbarBrand>
       </NavbarContent>
       {/* large */}
       <NavbarContent className="hidden sm:flex gap-4" justify="start">
         <NavbarBrand>
-          <p className="font-bold text-inherit">Ultimate Tripz</p>
+          <Link href="/" className="font-bold text-inherit">
+            Ultimate Tripz
+          </Link>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">

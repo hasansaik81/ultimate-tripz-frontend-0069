@@ -15,8 +15,8 @@ export interface TPost {
   commentsCount: number;
   author: TPostAuthor;
   category: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   __v: number;
 }
 
