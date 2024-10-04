@@ -42,7 +42,6 @@ const Filter = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const user = useAppSelector(useCurrentUser);
-  console.log("user:", user);
 
   const handleSort = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());

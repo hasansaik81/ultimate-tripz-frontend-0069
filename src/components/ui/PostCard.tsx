@@ -9,6 +9,7 @@ import { useAppSelector } from "@/src/redux/hooks";
 import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
 import { formatDateTime } from "@/src/utils/date";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
+import Follow from "../actions/Follow";
 
 type TPostCard = {
   data: TPost[];
@@ -28,7 +29,7 @@ const PostCard = ({ data, profile = false }: TPostCard) => {
               className=" bg-slate-100 dark:bg-primary-dark rounded-xl h-fit"
             >
               {!profile && (
-                <div className="p-4">
+                <div className="p-4 flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <Image
                       src={item?.author?.avatar}
@@ -44,6 +45,7 @@ const PostCard = ({ data, profile = false }: TPostCard) => {
                       <p>{formatDateTime(item.createdAt)}</p>
                     </div>
                   </div>
+                  <Follow author={item.author} />
                 </div>
               )}
               <Link href={`/articles/${item._id}`} className="relative">

@@ -53,7 +53,9 @@ export interface TPopularPost {
 export interface TPostAuthor {
   _id: string;
   name: string;
+  email: string;
   avatar: string;
+  followers: string[];
 }
 
 export interface TComment {
