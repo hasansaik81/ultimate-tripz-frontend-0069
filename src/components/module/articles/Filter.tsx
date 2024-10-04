@@ -14,7 +14,7 @@ const sortOptions = [
     label: "Sort by votes",
   },
 ];
-const tagOptions = [
+export const tagOptions = [
   {
     value: "regular",
     label: "Regular",
@@ -24,7 +24,7 @@ const tagOptions = [
     label: "Premium",
   },
 ];
-const categoryOptions = [
+export const categoryOptions = [
   { value: "adventure", label: "Adventure" },
   { value: "eco-tourism", label: "Eco-tourism" },
   { value: "luxury", label: "Luxury" },

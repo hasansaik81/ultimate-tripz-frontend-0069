@@ -1,5 +1,5 @@
 "use client";
-import { Field, FieldProps } from "formik";
+import { ErrorMessage, Field, FieldProps } from "formik";
 import { Input } from "@nextui-org/input";
 
 interface InputProps {
@@ -41,6 +41,7 @@ const FormikInput: React.FC<InputProps> = ({
           </>
         )}
       </Field>
+      <ErrorMessage name={name} component="p" className="text-danger" />
     </div>
   );
 };

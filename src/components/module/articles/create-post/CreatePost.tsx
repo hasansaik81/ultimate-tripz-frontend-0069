@@ -2,9 +2,13 @@
 import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
 import { useAppSelector } from "@/src/redux/hooks";
 import Image from "next/image";
+import CustomEditor from "./CustomEditor";
+import { useState } from "react";
+import CustomModal from "@/src/components/ui/CustomModal";
 
 const CreatePost = () => {
   const user = useAppSelector(useCurrentUser) as TUser;
+  const [isEditorModalOpen, setIsEditorModalOpen] = useState(false);
   return (
     <div className="pt-5">
       <p className="text-lg font-medium mb-5">Have anything on mind?</p>
@@ -17,11 +21,24 @@ const CreatePost = () => {
           className="size-[60px] rounded-full border object-cover"
         />
         <input
+          onClick={() => setIsEditorModalOpen(true)}
           type="text"
           className="rounded-full w-full h-[60px] border px-5"
           placeholder="Share your thoughts...!"
         />
       </div>
+      <CustomModal
+        isOpen={isEditorModalOpen}
+        onClose={() => setIsEditorModalOpen(false)}
+        footer={false}
+        title="Editor"
+        size="5xl"
+      >
+        <CustomEditor
+          onClose={() => setIsEditorModalOpen(false)}
+          authorId={user.id}
+        />
+      </CustomModal>
     </div>
   );
 };

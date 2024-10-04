@@ -7,6 +7,17 @@ import {
   ModalFooter,
 } from "@nextui-org/modal";
 import { ReactNode } from "react";
+type ModalSize =
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
 type CustomModalProps = {
   isOpen: boolean;
   footer?: boolean;
@@ -15,6 +26,7 @@ type CustomModalProps = {
   children: ReactNode;
   actionButtonTitle?: string;
   title?: string;
+  size?: ModalSize;
 };
 
 const CustomModal = ({
@@ -24,10 +36,11 @@ const CustomModal = ({
   actionButtonTitle,
   title,
   footer = true,
+  size = "md",
   children,
 }: CustomModalProps) => {
   return (
-    <Modal className="" isOpen={isOpen} onOpenChange={onClose}>
+    <Modal size={size} isOpen={isOpen} onOpenChange={onClose}>
       <ModalContent>
         <>
           {title && (

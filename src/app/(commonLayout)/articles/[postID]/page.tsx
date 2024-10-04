@@ -108,7 +108,11 @@ const PostDetails = ({ params }: TProps) => {
               <IoIosTimer /> {formatDateTime(postInfo.createdAt)}
             </p>
           </div>
-          <p className="my-5">{postInfo?.content}</p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: postInfo?.content,
+            }}
+          />
         </div>
         <div>
           <Image
@@ -144,7 +148,7 @@ const PostDetails = ({ params }: TProps) => {
               return (
                 <div
                   key={item?._id}
-                  className="border rounded-xl p-5 bg-slate-900"
+                  className="border rounded-xl p-5 dark:bg-slate-900 bg-white"
                 >
                   <div className="flex justify-between items-start">
                     <div className="flex items-center gap-5 mb-4">

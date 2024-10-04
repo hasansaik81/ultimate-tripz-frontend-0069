@@ -32,7 +32,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       className={`reactDropdownSelect-container 
     ${prefix && `${prefix}-reactDropdownSelect-container`}`}
     >
-      {label && <p className="field-title">{label}</p>}
+      {label && <p className="mb-4">{label}</p>}
       <Field name={name}>
         {({ field, form }: FieldProps<string | string[]>) => {
           const selectedValues = multi
@@ -45,7 +45,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
           return (
             <Select
-              className="react-dropdown-select-custom-style input-field-shadow"
+              className="react-dropdown-select-custom-style"
               labelField="name"
               valueField="value"
               placeholder={placeholder}

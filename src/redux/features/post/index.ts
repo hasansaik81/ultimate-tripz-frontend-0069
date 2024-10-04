@@ -11,6 +11,14 @@ const postApi = baseApi.injectEndpoints({
     getPostByAuthor: builder.query({
       query: (id) => `/post/posts-by-author/${id}`,
     }),
+    createPost: builder.mutation({
+      query: (postInfo) => ({
+        url: "/post/create-post",
+        method: "POST",
+        body: postInfo,
+      }),
+      invalidatesTags: ["Post"],
+    }),
   }),
 });
 
@@ -18,4 +26,5 @@ export const {
   useGetPopularPostsQuery,
   useGetPostDetailsQuery,
   useGetPostByAuthorQuery,
+  useCreatePostMutation,
 } = postApi;

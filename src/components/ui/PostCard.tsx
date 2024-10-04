@@ -67,7 +67,12 @@ const PostCard = ({ data, profile = false }: TPostCard) => {
                 >
                   {item.title}
                 </Link>
-                <p>{item.content.slice(0, 80)}...</p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: item.content.slice(0, 80) + "...",
+                  }}
+                />
+                {/* <p>{item.content.slice(0, 80)}...</p> */}
               </div>
               <div className="flex items-center justify-between border-t h-[50px]">
                 <div className="w-full flex justify-center">

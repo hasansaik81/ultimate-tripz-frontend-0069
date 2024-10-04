@@ -12,3 +12,10 @@
 .dropdown-filter {
   width: 170px !important;
 }
+
+.react-dropdown-select-content {
+  font-size: 16px !important;
+}
+.react-dropdown-select-content span {
+  font-size: 16px !important;
+}
