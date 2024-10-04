@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useCurrentUser } from "@/src/redux/features/auth/authSlice";
-import { useAppSelector } from "@/src/redux/hooks";
+import { logout, useCurrentUser } from "@/src/redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/src/redux/hooks";
 import { Link } from "@nextui-org/link";
 import {
   Navbar,
@@ -55,6 +55,11 @@ const CustomNavbar = () => {
   const user = useAppSelector(useCurrentUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   // Ensure component is mounted before rendering user-specific content
   useEffect(() => {
@@ -67,7 +72,12 @@ const CustomNavbar = () => {
   }
 
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      className="dark:bg-primary-dark"
+    >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -109,7 +119,7 @@ const CustomNavbar = () => {
           </NavbarItem>
         ) : (
           <NavbarItem className="hidden lg:flex">
-            <Button>Logout</Button>
+            <Button onClick={handleLogout}>Logout</Button>
           </NavbarItem>
         )}
         <NavbarItem className="hidden lg:flex">

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useAppSelector } from "@/src/redux/hooks";
 import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
 import { formatDateTime } from "@/src/utils/date";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 type TPostCard = {
   data: TPost[];
@@ -22,9 +23,12 @@ const PostCard = ({ data, profile = false }: TPostCard) => {
       <div className="grid grid-cols-2 gap-10">
         {data?.map((item: TPost) => {
           return (
-            <div key={item._id} className="space-y-5">
+            <div
+              key={item._id}
+              className=" bg-slate-100 dark:bg-primary-dark rounded-xl h-fit"
+            >
               {!profile && (
-                <div>
+                <div className="p-4">
                   <div className="flex items-center gap-3">
                     <Image
                       src={item?.author?.avatar}
@@ -42,25 +46,30 @@ const PostCard = ({ data, profile = false }: TPostCard) => {
                   </div>
                 </div>
               )}
-              <Link href={`/articles/${item._id}`}>
+              <Link href={`/articles/${item._id}`} className="relative">
                 <Image
                   src={item.images[0]}
                   alt="banner"
                   height={300}
                   width={400}
-                  className="rounded-2xl object-cover w-full h-[260px] mt-5"
+                  className="object-cover w-full h-[260px]"
                 />
+                {item.tags === "premium" && (
+                  <p className="absolute top-1 right-2">
+                    <RiVerifiedBadgeFill className="text-primary-400" />
+                  </p>
+                )}
               </Link>
-              <div className="">
+              <div className="p-4">
                 <Link
                   href={`/articles/${item._id}`}
                   className="text-lg font-semibold"
                 >
                   {item.title}
                 </Link>
-                <p>{item.content.slice(0, 90)}...</p>
+                <p>{item.content.slice(0, 80)}...</p>
               </div>
-              <div className="flex items-center justify-between border-t border-b h-[50px]">
+              <div className="flex items-center justify-between border-t h-[50px]">
                 <div className="w-full flex justify-center">
                   <UpVote votes={item.upVotes} id={item._id} />
                 </div>

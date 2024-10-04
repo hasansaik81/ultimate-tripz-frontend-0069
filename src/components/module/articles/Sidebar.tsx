@@ -9,7 +9,7 @@ import { LiaUserEditSolid } from "react-icons/lia";
 const Sidebar = () => {
   const { data, isLoading } = useGetPopularPostsQuery("");
   return (
-    <div className="sticky top-[100px] ">
+    <div className="sticky top-[84px] ">
       <div className="">
         <div className="space-y-2 border rounded-xl p-4">
           <p className="text-2xl font-bold">Subscribe to Premium</p>

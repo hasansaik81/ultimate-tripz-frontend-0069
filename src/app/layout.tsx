@@ -4,6 +4,8 @@ import { Metadata, Viewport } from "next";
 import { siteConfig } from "@/src/config/site";
 import { Providers } from "../lib/Providers";
 import { Roboto } from "next/font/google";
+import clsx from "clsx";
+import { fontSans } from "../config/fonts";
 
 const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
@@ -38,8 +40,14 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head />
-      <body className={roboto.className}>
-        <Providers>
+      <body
+        className={clsx(
+          "min-h-screen font-sans antialiased bg-slate-50 dark:bg-black",
+          roboto.className,
+          fontSans.variable
+        )}
+      >
+        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <main className="container mx-auto max-w-7xl">{children}</main>
         </Providers>
       </body>

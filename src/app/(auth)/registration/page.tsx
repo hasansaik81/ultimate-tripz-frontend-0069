@@ -1,7 +1,11 @@
 "use client";
 import FormikInput from "@/src/components/formik/FormikInput";
+import { useRegistrationMutation } from "@/src/redux/features/auth";
+import { TErrorResponse } from "@/src/types";
 import { Button } from "@nextui-org/button";
-import { Form, Formik, FormikHelpers } from "formik";
+import { Form, Formik } from "formik";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 // Define form values type
 interface FormValues {
@@ -22,13 +26,36 @@ const initialValues: FormValues = {
   avatar: null,
 };
 
-const page = () => {
-  const handleSubmit = async (
-    values: FormValues,
-    { setSubmitting }: FormikHelpers<FormValues>
-  ) => {
-    console.log(values);
-    setSubmitting(false); // Stops the loading state after submission
+const Registration = () => {
+  const router = useRouter();
+  const [createUser] = useRegistrationMutation();
+  const handleSubmit = async (values: FormValues) => {
+    const toastId = toast.loading("User creating");
+    try {
+      const formData = new FormData();
+      const data = {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+        phone: values.phone,
+        address: values.address,
+      };
+      formData.append("data", JSON.stringify(data));
+      if (values.avatar) {
+        formData.append("avatar", values.avatar);
+      }
+      const res = await createUser(formData).unwrap();
+      if (await res.success) {
+        router.push("/login");
+        toast.success("Please sign in", { id: toastId, duration: 2000 });
+      }
+    } catch (error) {
+      const err = error as TErrorResponse;
+      toast.error(err.data.errorMessages[0].message || "Something went wrong", {
+        id: toastId,
+        duration: 2000,
+      });
+    }
   };
 
   return (
@@ -97,4 +124,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Registration;
