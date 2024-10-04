@@ -5,7 +5,11 @@ const userApi = baseApi.injectEndpoints({
     getUserInfo: builder.query({
       query: () => "/user-info",
     }),
+    getUserInfoById: builder.query({
+      query: (id) => `/user-by-id/${id}`,
+      providesTags: ["User", "Post"],
+    }),
   }),
 });
 
-export const { useGetUserInfoQuery } = userApi;
+export const { useGetUserInfoQuery, useGetUserInfoByIdQuery } = userApi;

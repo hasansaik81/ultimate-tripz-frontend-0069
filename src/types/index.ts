@@ -58,6 +58,12 @@ export interface TPostAuthor {
   followers: string[];
 }
 
+export interface TFollowUser {
+  _id: string;
+  name: string;
+  avatar: string;
+}
+
 export interface TComment {
   _id: string;
   postId: string;

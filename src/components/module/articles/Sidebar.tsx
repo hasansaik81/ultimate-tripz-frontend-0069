@@ -40,7 +40,7 @@ const Sidebar = () => {
                         <FaAnglesUp /> {item.upVotes.length}
                       </p>
                       <Link
-                        href={`/user/${item.author._id}`}
+                        href={`/profile/${item.author._id}`}
                         className="flex items-center gap-2"
                       >
                         <LiaUserEditSolid className="text-xl" />{" "}

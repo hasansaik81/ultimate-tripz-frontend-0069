@@ -19,6 +19,7 @@ const postApi = baseApi.injectEndpoints({
     }),
     getPostByAuthor: builder.query({
       query: (id) => `/post/posts-by-author/${id}`,
+      providesTags: ["Post"],
     }),
     createPost: builder.mutation({
       query: (postInfo) => ({

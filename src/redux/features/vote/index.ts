@@ -7,14 +7,14 @@ const voteApi = baseApi.injectEndpoints({
         url: `/post/upvote/${id}`,
         method: "POST",
       }),
-      invalidatesTags: ["Post"],
+      invalidatesTags: ["Post", "User"],
     }),
     downvote: builder.mutation({
       query: (id) => ({
         url: `/post/downvote/${id}`,
         method: "POST",
       }),
-      invalidatesTags: ["Post"],
+      invalidatesTags: ["Post", "User"],
     }),
   }),
 });
