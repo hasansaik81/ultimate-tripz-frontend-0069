@@ -10,10 +10,7 @@ const followApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Post", "User"],
     }),
-    getUserInfo: builder.query({
-      query: () => "/user-info",
-    }),
   }),
 });
 
-export const { useFollowMutation, useGetUserInfoQuery } = followApi;
+export const { useFollowMutation } = followApi;

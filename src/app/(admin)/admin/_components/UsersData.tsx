@@ -1,0 +1,74 @@
+"use client";
+import { useGetUsersQuery } from "@/src/redux/features/admin";
+import { TErrorResponse, TUserDetails } from "@/src/types";
+import { Button } from "@nextui-org/button";
+import Image from "next/image";
+import { toast } from "sonner";
+
+const UsersData = () => {
+  const { data, error } = useGetUsersQuery("");
+  const users = data?.data;
+  if (error) {
+    const err = error as TErrorResponse;
+    toast.warning(err?.data?.message);
+  }
+  return (
+    <div>
+      <div className="p-5">
+        {/* Title and Subtitle */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold">User Management</h1>
+          <p className="text-gray-600 dark:text-slate-50">
+            Manage all registered users, view details, and perform actions like
+            editing or deleting users.
+          </p>
+        </div>
+
+        {/* Table */}
+        <table className="min-w-full table-auto">
+          <thead>
+            <tr className="bg-gray-200 dark:bg-dark-100">
+              <th className="px-4 py-2">Avatar</th>
+              <th className="px-4 py-2">Name</th>
+              <th className="px-4 py-2">Email</th>
+              <th className="px-4 py-2">Phone</th>
+              <th className="px-4 py-2">Role</th>
+              <th className="px-4 py-2">Status</th>
+              <th className="px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users?.map((user: TUserDetails) => (
+              <tr key={user._id} className="border-t">
+                <td className="px-4 py-2">
+                  <Image
+                    src={user.avatar}
+                    alt={user.name}
+                    height={60}
+                    width={60}
+                    className="rounded-full object-cover size-[50px]"
+                  />
+                </td>
+                <td className="px-4 py-2">{user.name}</td>
+                <td className="px-4 py-2">{user.email}</td>
+                <td className="px-4 py-2">{user.phone}</td>
+                <td className="px-4 py-2">{user.role}</td>
+                <td className="px-4 py-2">{user.status}</td>
+                <td className="px-4 py-2 flex items-center justify-center gap-2">
+                  <Button size="sm" color="primary">
+                    Edit
+                  </Button>
+                  <Button size="sm" color="danger">
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default UsersData;

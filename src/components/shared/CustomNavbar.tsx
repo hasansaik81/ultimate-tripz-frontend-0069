@@ -46,7 +46,7 @@ const links = [
   },
   {
     title: "Dashboard",
-    href: "#",
+    href: "/admin",
     secure: true,
   },
 ];
