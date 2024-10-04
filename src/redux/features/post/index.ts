@@ -2,6 +2,15 @@ import baseApi from "../../api/baseApi";
 
 const postApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    getAllPosts: builder.query({
+      query: (filters) => {
+        const params = new URLSearchParams(filters).toString();
+        return {
+          url: `/post/all-posts?${params}`,
+        };
+      },
+      providesTags: ["Post"],
+    }),
     getPopularPosts: builder.query({
       query: () => "/post/popular",
     }),
@@ -23,6 +32,7 @@ const postApi = baseApi.injectEndpoints({
 });
 
 export const {
+  useGetAllPostsQuery,
   useGetPopularPostsQuery,
   useGetPostDetailsQuery,
   useGetPostByAuthorQuery,
