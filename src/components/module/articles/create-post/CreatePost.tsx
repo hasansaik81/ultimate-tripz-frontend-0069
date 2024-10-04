@@ -3,13 +3,23 @@ import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
 import { useAppSelector } from "@/src/redux/hooks";
 import Image from "next/image";
 import CustomEditor from "./CustomEditor";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CustomModal from "@/src/components/ui/CustomModal";
 import Link from "next/link";
 
 const CreatePost = () => {
   const user = useAppSelector(useCurrentUser) as TUser;
+  const [isMounted, setIsMounted] = useState(false);
   const [isEditorModalOpen, setIsEditorModalOpen] = useState(false);
+
+  // Ensure this runs only on the client
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // Avoid rendering on the server
+  }
 
   return (
     <>

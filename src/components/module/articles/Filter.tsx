@@ -42,7 +42,7 @@ const Filter = () => {
   const handleSort = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set(key, value);
-    router.push(`/articles?${params.toString()}`);
+    router.push(`?${params.toString()}`);
   };
 
   return (
