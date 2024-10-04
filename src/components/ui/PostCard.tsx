@@ -18,7 +18,6 @@ type TPostCard = {
 
 const PostCard = ({ data, profile = false }: TPostCard) => {
   const user = useAppSelector(useCurrentUser) as TUser;
-  console.log(user);
   return (
     <div>
       <div className="grid grid-cols-2 gap-10">
