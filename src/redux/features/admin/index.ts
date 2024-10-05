@@ -7,7 +7,8 @@ const adminApi = baseApi.injectEndpoints({
       providesTags: ["User"],
     }),
     getPosts: builder.query({
-      query: () => "/post/all-posts",
+      query: () => "/post/all-active-inactive-posts",
+      providesTags: ["Post"],
     }),
   }),
 });

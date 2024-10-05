@@ -1,14 +1,12 @@
 "use client";
-import { useGetAllPostsQuery } from "@/src/redux/features/post";
 import { TPostDetails } from "@/src/types";
 import { toast } from "sonner";
 import UpdateBlog from "./UpdateBlog";
+import { useGetPostsQuery } from "@/src/redux/features/admin";
 
 const BlogsData = () => {
-  const { data, error } = useGetAllPostsQuery("");
+  const { data, error } = useGetPostsQuery("");
   const posts = data?.data; // Accessing posts array
-
-  console.log(posts);
 
   // Error handling
   if (error) {
