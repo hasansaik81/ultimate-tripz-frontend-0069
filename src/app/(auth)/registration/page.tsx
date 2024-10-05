@@ -95,6 +95,7 @@ const Registration = () => {
                   Profile Picture
                 </label>
                 <input
+                  accept="image/*"
                   id="avatar"
                   type="file"
                   className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
