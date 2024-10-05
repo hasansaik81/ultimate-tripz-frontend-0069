@@ -19,3 +19,16 @@
 .react-dropdown-select-content span {
   font-size: 16px !important;
 }
+
+.react-dropdown-select-custom-style span {
+  background-color: #191919;
+  color: white;
+}
+.react-dropdown-select-custom-style span:hover {
+  background-color: #202020;
+  color: white;
+}
+.react-dropdown-select-item-selected {
+  background-color: #202020 !important;
+  color: white !important;
+}

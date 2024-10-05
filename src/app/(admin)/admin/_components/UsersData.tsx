@@ -4,6 +4,7 @@ import { TErrorResponse, TUserDetails } from "@/src/types";
 import { Button } from "@nextui-org/button";
 import Image from "next/image";
 import { toast } from "sonner";
+import UpdateUser from "./UpdateUser";
 
 const UsersData = () => {
   const { data, error } = useGetUsersQuery("");
@@ -56,12 +57,7 @@ const UsersData = () => {
                   <td className="px-4 py-2 text-center">{user.role}</td>
                   <td className="px-4 py-2 text-center">{user.status}</td>
                   <td className="px-4 py-2 flex items-center justify-center gap-2">
-                    <Button size="sm" color="primary">
-                      Edit
-                    </Button>
-                    <Button size="sm" color="danger">
-                      Delete
-                    </Button>
+                    <UpdateUser userId={user._id} />
                   </td>
                 </tr>
               ))}
