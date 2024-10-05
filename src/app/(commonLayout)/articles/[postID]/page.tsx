@@ -24,6 +24,7 @@ import { FiEdit3 } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 import { useState } from "react";
 import CustomModal from "@/src/components/ui/CustomModal";
+import PDFBlogDetails from "../_components/PDFBlogDetails";
 
 type TPostComment = {
   feedback: string;
@@ -97,32 +98,8 @@ const PostDetails = ({ params }: TProps) => {
   }
   return (
     <div className="py-10">
-      <div className="flex gap-x-10">
-        <div>
-          <h2 className="text-2xl font-bold">{postInfo?.title}</h2>
-          <div className="flex items-center gap-5">
-            <p className="flex items-center gap-x-2">
-              <LiaUserEditSolid /> {postInfo.author.name}
-            </p>
-            <p className="flex items-center gap-x-2">
-              <IoIosTimer /> {formatDateTime(postInfo.createdAt)}
-            </p>
-          </div>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: postInfo?.content,
-            }}
-          />
-        </div>
-        <div>
-          <Image
-            src={postInfo?.images[0]}
-            height={600}
-            width={600}
-            alt={postInfo?.title}
-          />
-        </div>
-      </div>
+      {/* pdf div */}
+      <PDFBlogDetails postInfo={postInfo} />
       <div className="">
         <div className="lg:w-[50%] mt-5">
           <div className="lg:w-1/2 flex items-center gap-x-5">
