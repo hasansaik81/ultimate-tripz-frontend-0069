@@ -19,7 +19,7 @@ const Sidebar = () => {
           {user?.status === "basic" || !user ? (
             <div>
               <p className="text-2xl font-bold">Subscribe to Premium</p>
-              <p className="font-medium">
+              <p className="font-medium mt-2 mb-3">
                 Subscribe to unlock new features and if eligible, receive a
                 share of ads revenue.
               </p>

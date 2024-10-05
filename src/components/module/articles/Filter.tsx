@@ -46,7 +46,7 @@ const Filter = () => {
   };
 
   return (
-    <div className="flex justify-between items-center py-10 gap-5">
+    <div className="flex justify-between items-center pb-10 mt-5 gap-5">
       <Select
         closeOnScroll
         className="dropdown-filter"

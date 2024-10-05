@@ -27,7 +27,9 @@ const DetectReload = () => {
 
   useEffect(() => {
     // Call handleReload when the site loads
-    handleReload();
+    if (user) {
+      handleReload();
+    }
   }, []); // Empty dependency array means it only runs on initial load
 
   return <></>;

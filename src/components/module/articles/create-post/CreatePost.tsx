@@ -23,13 +23,13 @@ const CreatePost = () => {
   return (
     <>
       {!user ? (
-        <div className="pt-5 text-center">
+        <div className="pt-4 text-center">
           <p className="text-lg font-medium">
             Please <Link href="/login">log in</Link> to share your thoughts.
           </p>
         </div>
       ) : (
-        <div className="pt-5">
+        <div className="pt-4">
           <p className="text-lg font-medium mb-5">Have anything on mind?</p>
           <div className="flex items-center gap-5">
             <Image
