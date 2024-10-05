@@ -6,6 +6,7 @@ import { Providers } from "../lib/Providers";
 import { Roboto } from "next/font/google";
 import clsx from "clsx";
 import { fontSans } from "../config/fonts";
+import DetectReload from "../components/actions/DetectReload";
 
 const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
@@ -48,7 +49,10 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <main className="container mx-auto max-w-7xl">{children}</main>
+          <main className="container mx-auto max-w-7xl">
+            {children}
+            <DetectReload />
+          </main>
         </Providers>
       </body>
     </html>

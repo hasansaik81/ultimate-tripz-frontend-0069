@@ -30,6 +30,12 @@ const authApi = baseApi.injectEndpoints({
         body: newPass,
       }),
     }),
+    refreshToken: builder.mutation({
+      query: () => ({
+        url: "/auth/refresh-token",
+        method: "POST",
+      }),
+    }),
   }),
 });
 
@@ -38,4 +44,5 @@ export const {
   useRegistrationMutation,
   useChangePasswordMutation,
   useRecoverPasswordMutation,
+  useRefreshTokenMutation,
 } = authApi;

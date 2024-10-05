@@ -11,7 +11,6 @@ const CreatePost = () => {
   const user = useAppSelector(useCurrentUser) as TUser;
   const [isMounted, setIsMounted] = useState(false);
   const [isEditorModalOpen, setIsEditorModalOpen] = useState(false);
-
   // Ensure this runs only on the client
   useEffect(() => {
     setIsMounted(true);
