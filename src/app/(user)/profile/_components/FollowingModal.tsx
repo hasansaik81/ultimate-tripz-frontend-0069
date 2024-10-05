@@ -16,8 +16,16 @@ const FollowingModal = ({
   following,
 }: FollowingModalProps) => {
   return (
-    <CustomModal isOpen={isOpen} onClose={onClose} title="Following">
+    <CustomModal
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Following"
+      footer={false}
+    >
       <div>
+        {following.length >= 0 && (
+          <p className="text-center mb-5">No Following Available</p>
+        )}
         {following?.map((item) => (
           <div key={item?._id} className="flex items-center justify-between">
             <div className="flex items-center gap-3">

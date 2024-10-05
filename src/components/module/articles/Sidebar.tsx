@@ -11,7 +11,6 @@ import Subscribe from "../../actions/Subscribe";
 const Sidebar = () => {
   const { data, isLoading } = useGetPopularPostsQuery("");
   const user = useAppSelector(useCurrentUser) as TUser;
-  console.log("user", user);
   return (
     <div className="sticky top-[84px] ">
       <div className="">

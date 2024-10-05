@@ -4,16 +4,17 @@ const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getUserInfo: builder.query({
       query: () => "/user-info",
+      providesTags: ["User", "Post"],
     }),
     getUserInfoById: builder.query({
       query: (id) => `/user-by-id/${id}`,
       providesTags: ["User", "Post"],
     }),
     updateUserInfo: builder.mutation({
-      query: ({ id, userInfo }) => ({
+      query: ({ id, data }) => ({
         url: `/update-user/${id}`,
         method: "PUT",
-        body: userInfo,
+        body: data,
       }),
       invalidatesTags: ["User"],
     }),
