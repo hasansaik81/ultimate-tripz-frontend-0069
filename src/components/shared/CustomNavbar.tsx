@@ -36,7 +36,7 @@ const links = [
   },
   {
     title: "Contact us",
-    href: "#",
+    href: "/contact-us",
     secure: false,
   },
   {
@@ -87,7 +87,7 @@ const CustomNavbar = () => {
       <NavbarContent className="sm:hidden pr-3" justify="start">
         <NavbarBrand>
           <Link href="/" className="font-bold text-inherit">
-            ACMEY
+            Ultimate Tripz
           </Link>
         </NavbarBrand>
       </NavbarContent>
