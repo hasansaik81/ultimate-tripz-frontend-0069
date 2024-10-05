@@ -26,15 +26,9 @@ const DetectReload = () => {
   };
 
   useEffect(() => {
-    const [navEntry] = performance.getEntriesByType(
-      "navigation"
-    ) as PerformanceNavigationTiming[];
-
-    if (navEntry?.type === "reload") {
-      // Call the function after reload
-      handleReload();
-    }
-  }, []);
+    // Call handleReload when the site loads
+    handleReload();
+  }, []); // Empty dependency array means it only runs on initial load
 
   return <></>;
 };
