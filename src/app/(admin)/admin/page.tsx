@@ -1,9 +1,7 @@
-import BlogsData from "../_components/BlogsData";
-
 const page = () => {
   return (
     <div>
-      <BlogsData />
+      <p>Hello, page!</p>
     </div>
   );
 };

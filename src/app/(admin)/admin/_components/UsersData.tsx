@@ -49,11 +49,11 @@ const UsersData = () => {
                     className="rounded-full object-cover size-[50px]"
                   />
                 </td>
-                <td className="px-4 py-2">{user.name}</td>
-                <td className="px-4 py-2">{user.email}</td>
-                <td className="px-4 py-2">{user.phone}</td>
-                <td className="px-4 py-2">{user.role}</td>
-                <td className="px-4 py-2">{user.status}</td>
+                <td className="px-4 py-2 text-center">{user.name}</td>
+                <td className="px-4 py-2 text-center">{user.email}</td>
+                <td className="px-4 py-2 text-center">{user.phone}</td>
+                <td className="px-4 py-2 text-center">{user.role}</td>
+                <td className="px-4 py-2 text-center">{user.status}</td>
                 <td className="px-4 py-2 flex items-center justify-center gap-2">
                   <Button size="sm" color="primary">
                     Edit
