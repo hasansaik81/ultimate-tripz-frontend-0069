@@ -14,7 +14,7 @@ const BlogsData = () => {
   }
 
   return (
-    <div className="p-5">
+    <div className="md:p-5 pt-6 md:pt-auto">
       {/* Title and Subtitle */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold">Blog Management</h1>
@@ -24,38 +24,42 @@ const BlogsData = () => {
       </div>
 
       {/* Table */}
-      <table className="min-w-full table-auto">
-        <thead>
-          <tr className="bg-gray-200 dark:bg-dark-100">
-            <th className="px-4 py-2">Title</th>
-            <th className="px-4 py-2">Author</th>
-            <th className="px-4 py-2">Tags</th>
-            <th className="px-4 py-2">Created At</th>
-            <th className="px-4 py-2">Upvotes</th>
-            <th className="px-4 py-2">Downvotes</th>
-            <th className="px-4 py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {posts?.map((post: TPostDetails) => (
-            <tr key={post._id} className="border-t">
-              <td className="px-4 py-2">{post.title}</td>
-              <td className="px-4 py-2 text-center">{post.author.name}</td>
-              <td className="px-4 py-2 text-center">{post.tags}</td>
-              <td className="px-4 py-2 text-center">
-                {new Date(post.createdAt).toLocaleDateString()}
-              </td>
-              <td className="px-4 py-2 text-center">{post.upVotes.length}</td>
-              <td className="px-4 py-2 text-center">{post.downVotes.length}</td>
-              <td className="px-4 py-2 flex items-center justify-center gap-2">
-                <Button size="sm" color="primary">
-                  Edit
-                </Button>
-              </td>
+      <div className="overflow-x-auto">
+        <table className="min-w-full table-auto overflow-x-scroll">
+          <thead>
+            <tr className="bg-gray-200 dark:bg-dark-100">
+              <th className="px-4 py-2">Title</th>
+              <th className="px-4 py-2">Author</th>
+              <th className="px-4 py-2">Tags</th>
+              <th className="px-4 py-2">Created At</th>
+              <th className="px-4 py-2">Upvotes</th>
+              <th className="px-4 py-2">Downvotes</th>
+              <th className="px-4 py-2">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {posts?.map((post: TPostDetails) => (
+              <tr key={post._id} className="border-t">
+                <td className="px-4 py-2">{post.title}</td>
+                <td className="px-4 py-2 text-center">{post.author.name}</td>
+                <td className="px-4 py-2 text-center">{post.tags}</td>
+                <td className="px-4 py-2 text-center">
+                  {new Date(post.createdAt).toLocaleDateString()}
+                </td>
+                <td className="px-4 py-2 text-center">{post.upVotes.length}</td>
+                <td className="px-4 py-2 text-center">
+                  {post.downVotes.length}
+                </td>
+                <td className="px-4 py-2 flex items-center justify-center gap-2">
+                  <Button size="sm" color="primary">
+                    Edit
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

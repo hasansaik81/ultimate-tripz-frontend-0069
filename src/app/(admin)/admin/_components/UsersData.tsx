@@ -13,8 +13,8 @@ const UsersData = () => {
     toast.warning(err?.data?.message);
   }
   return (
-    <div>
-      <div className="p-5">
+    <div className="">
+      <div className="md:p-5 pt-6 md:pt-auto">
         {/* Title and Subtitle */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold">User Management</h1>
@@ -25,47 +25,49 @@ const UsersData = () => {
         </div>
 
         {/* Table */}
-        <table className="min-w-full table-auto">
-          <thead>
-            <tr className="bg-gray-200 dark:bg-dark-100">
-              <th className="px-4 py-2">Avatar</th>
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Email</th>
-              <th className="px-4 py-2">Phone</th>
-              <th className="px-4 py-2">Role</th>
-              <th className="px-4 py-2">Status</th>
-              <th className="px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users?.map((user: TUserDetails) => (
-              <tr key={user._id} className="border-t">
-                <td className="px-4 py-2">
-                  <Image
-                    src={user.avatar}
-                    alt={user.name}
-                    height={60}
-                    width={60}
-                    className="rounded-full object-cover size-[50px]"
-                  />
-                </td>
-                <td className="px-4 py-2 text-center">{user.name}</td>
-                <td className="px-4 py-2 text-center">{user.email}</td>
-                <td className="px-4 py-2 text-center">{user.phone}</td>
-                <td className="px-4 py-2 text-center">{user.role}</td>
-                <td className="px-4 py-2 text-center">{user.status}</td>
-                <td className="px-4 py-2 flex items-center justify-center gap-2">
-                  <Button size="sm" color="primary">
-                    Edit
-                  </Button>
-                  <Button size="sm" color="danger">
-                    Delete
-                  </Button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-auto">
+            <thead>
+              <tr className="bg-gray-200 dark:bg-dark-100">
+                <th className="px-4 py-2">Avatar</th>
+                <th className="px-4 py-2">Name</th>
+                <th className="px-4 py-2">Email</th>
+                <th className="px-4 py-2">Phone</th>
+                <th className="px-4 py-2">Role</th>
+                <th className="px-4 py-2">Status</th>
+                <th className="px-4 py-2">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users?.map((user: TUserDetails) => (
+                <tr key={user._id} className="border-t">
+                  <td className="px-4 py-2">
+                    <Image
+                      src={user.avatar}
+                      alt={user.name}
+                      height={60}
+                      width={60}
+                      className="rounded-full object-cover size-[50px]"
+                    />
+                  </td>
+                  <td className="px-4 py-2 text-center">{user.name}</td>
+                  <td className="px-4 py-2 text-center">{user.email}</td>
+                  <td className="px-4 py-2 text-center">{user.phone}</td>
+                  <td className="px-4 py-2 text-center">{user.role}</td>
+                  <td className="px-4 py-2 text-center">{user.status}</td>
+                  <td className="px-4 py-2 flex items-center justify-center gap-2">
+                    <Button size="sm" color="primary">
+                      Edit
+                    </Button>
+                    <Button size="sm" color="danger">
+                      Delete
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
