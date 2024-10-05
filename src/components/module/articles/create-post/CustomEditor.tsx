@@ -96,7 +96,7 @@ const CustomEditor = ({ authorId, onClose }: TProps) => {
       };
       formData.append("data", JSON.stringify(data));
       if (values.image) {
-        formData.append("images", values.image);
+        formData.append("image", values.image);
       }
       const res = await createPost(formData).unwrap();
       if (await res.success) {

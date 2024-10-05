@@ -48,13 +48,15 @@ const PostCard = ({ data, profile = false }: TPostCard) => {
                 </div>
               )}
               <Link href={`/articles/${item._id}`} className="relative">
-                <Image
-                  src={item.images[0]}
-                  alt="banner"
-                  height={300}
-                  width={400}
-                  className="object-cover w-full h-[260px]"
-                />
+                {item?.images && (
+                  <Image
+                    src={item?.images[0]}
+                    alt="banner"
+                    height={300}
+                    width={400}
+                    className="object-cover w-full h-[260px]"
+                  />
+                )}
                 {item.tags === "premium" && (
                   <p className="absolute top-1 right-2">
                     <RiVerifiedBadgeFill className="text-primary-400" />
