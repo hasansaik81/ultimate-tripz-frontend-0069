@@ -5,8 +5,6 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import UpVote from "../module/articles/UpVote";
 import DownVote from "../module/articles/DownVote";
 import Link from "next/link";
-import { useAppSelector } from "@/src/redux/hooks";
-import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
 import { formatDateTime } from "@/src/utils/date";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import Follow from "../actions/Follow";
@@ -17,7 +15,6 @@ type TPostCard = {
 };
 
 const PostCard = ({ data, profile = false }: TPostCard) => {
-  const user = useAppSelector(useCurrentUser) as TUser;
   return (
     <div>
       <div className="grid grid-cols-2 gap-10">
@@ -48,18 +45,28 @@ const PostCard = ({ data, profile = false }: TPostCard) => {
                 </div>
               )}
               <Link href={`/articles/${item._id}`} className="relative">
-                {item?.images && (
+                {item?.images ? (
                   <Image
                     src={item?.images[0]}
-                    alt="banner"
+                    alt="cover"
                     height={300}
                     width={400}
                     className="object-cover w-full h-[260px]"
                   />
+                ) : (
+                  item?.cover && (
+                    <Image
+                      src={item?.cover}
+                      alt="cover"
+                      height={300}
+                      width={400}
+                      className="object-cover w-full h-[260px]"
+                    />
+                  )
                 )}
                 {item.tags === "premium" && (
-                  <p className="absolute top-1 right-2">
-                    <RiVerifiedBadgeFill className="text-primary-400" />
+                  <p className="absolute top-2 right-2">
+                    <RiVerifiedBadgeFill className="text-primary-400 text-2xl" />
                   </p>
                 )}
               </Link>

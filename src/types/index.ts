@@ -3,6 +3,7 @@ export interface TPost {
   title: string;
   content: string;
   images: string[];
+  cover: string;
   tags: string;
   upVotes: any[];
   downVotes: any[];
