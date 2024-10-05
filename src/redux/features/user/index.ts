@@ -27,6 +27,14 @@ const userApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["User"],
     }),
+    subscribe: builder.mutation({
+      query: (info) => ({
+        url: `/bookings`,
+        method: "POST",
+        body: info,
+      }),
+      invalidatesTags: ["Post"],
+    }),
   }),
 });
 
@@ -35,4 +43,5 @@ export const {
   useUpdateUserInfoMutation,
   useUpdateUserRoleMutation,
   useGetUserInfoByIdQuery,
+  useSubscribeMutation,
 } = userApi;

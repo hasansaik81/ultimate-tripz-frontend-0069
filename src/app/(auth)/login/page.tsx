@@ -7,6 +7,7 @@ import { TErrorResponse } from "@/src/types";
 import { verifyToken } from "@/src/utils/VerifyToken";
 import { Button } from "@nextui-org/button";
 import { Form, Formik } from "formik";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -75,15 +76,15 @@ const LoginPage = () => {
         {/* Footer */}
         <p className="text-center text-sm text-gray-400 mt-5">
           Don&apos;t have an account?{" "}
-          <a href="/registration" className="text-blue-500 hover:underline">
+          <Link href="/registration" className="text-blue-500 hover:underline">
             Sign up
-          </a>
+          </Link>
         </p>
         <p className="text-center text-sm text-gray-400 mt-5">
           Forget your password?{" "}
-          <a href="/recover" className="text-blue-500 hover:underline">
+          <Link href="/recover" className="text-blue-500 hover:underline">
             Recover now!
-          </a>
+          </Link>
         </p>
       </div>
     </div>

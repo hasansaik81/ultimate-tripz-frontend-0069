@@ -4,6 +4,7 @@ import { useRegistrationMutation } from "@/src/redux/features/auth";
 import { TErrorResponse } from "@/src/types";
 import { Button } from "@nextui-org/button";
 import { Form, Formik } from "formik";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -115,9 +116,9 @@ const Registration = () => {
         {/* Footer */}
         <p className="text-center text-sm text-gray-500 mt-5">
           Have an account?{" "}
-          <a href="/login" className="text-blue-500 hover:underline">
+          <Link href="/login" className="text-blue-500 hover:underline">
             Log in
-          </a>
+          </Link>
         </p>
       </div>
     </div>
