@@ -1,12 +1,14 @@
 "use client";
 import { useGetAllPostsQuery } from "@/src/redux/features/post";
 import { TPostDetails } from "@/src/types";
-import { Button } from "@nextui-org/button";
 import { toast } from "sonner";
+import UpdateBlog from "./UpdateBlog";
 
 const BlogsData = () => {
   const { data, error } = useGetAllPostsQuery("");
   const posts = data?.data; // Accessing posts array
+
+  console.log(posts);
 
   // Error handling
   if (error) {
@@ -33,7 +35,7 @@ const BlogsData = () => {
               <th className="px-4 py-2">Tags</th>
               <th className="px-4 py-2">Created At</th>
               <th className="px-4 py-2">Upvotes</th>
-              <th className="px-4 py-2">Downvotes</th>
+              <th className="px-4 py-2">Is Active</th>
               <th className="px-4 py-2">Actions</th>
             </tr>
           </thead>
@@ -48,12 +50,10 @@ const BlogsData = () => {
                 </td>
                 <td className="px-4 py-2 text-center">{post.upVotes.length}</td>
                 <td className="px-4 py-2 text-center">
-                  {post.downVotes.length}
+                  {post.isActive ? "Active" : "In active"}
                 </td>
                 <td className="px-4 py-2 flex items-center justify-center gap-2">
-                  <Button size="sm" color="primary">
-                    Edit
-                  </Button>
+                  <UpdateBlog postId={post._id} />
                 </td>
               </tr>
             ))}

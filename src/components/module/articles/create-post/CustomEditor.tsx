@@ -167,7 +167,7 @@ const CustomEditor = ({ authorId, onClose }: TProps) => {
                 />
               </div>
               <div className="flex justify-end">
-                <Button type="submit">Update</Button>
+                <Button type="submit">Post</Button>
               </div>
             </Form>
           );

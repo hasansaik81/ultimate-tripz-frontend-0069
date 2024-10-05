@@ -7,23 +7,44 @@ import { Form, Formik } from "formik";
 import { useState } from "react";
 import { toast } from "sonner";
 
+const statusOptions = [
+  {
+    value: "true",
+    name: "Active",
+  },
+  {
+    value: "false",
+    name: "In active",
+  },
+];
+
 const UpdateBlog = ({ postId }: { postId: string }) => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   const [updatePost] = useUpdatePostMutation();
+
   const handleSubmit = async (values: { status: string }) => {
-    const toastId = toast.loading("User status updating!");
+    const toastId = toast.loading("Post status updating!");
+
+    // Create a new FormData object
+    const formData = new FormData();
+
+    // Serialize the object and append it as a JSON string
     const data = {
-      role: values.status,
+      isActive: values.status,
     };
+    formData.append("data", JSON.stringify(data));
+
     try {
       setIsUpdateModalOpen(false);
-      const res = await updatePost({ id: postId, data }).unwrap();
+
+      // Send formData with JSON stringified data
+      const res = await updatePost({ id: postId, data: formData }).unwrap();
+
       if (res.success) {
         toast.success(res.message, { id: toastId, duration: 2000 });
       }
     } catch (error) {
-      console.log(error);
       setIsUpdateModalOpen(false);
       const err = error as TErrorResponse;
       toast.error(err.data.errorMessages[0].message || "Something went wrong", {
@@ -45,14 +66,14 @@ const UpdateBlog = ({ postId }: { postId: string }) => {
       <CustomModal
         isOpen={isUpdateModalOpen}
         onClose={() => setIsUpdateModalOpen(false)}
-        title="Update role"
+        title="Update post visibility"
         footer={false}
       >
         <div>
           <Formik initialValues={{ status: "" }} onSubmit={handleSubmit}>
             {() => (
               <Form className="space-y-5 mb-4">
-                {/* <Dropdown options={statusOptions} name="status" /> */}
+                <Dropdown options={statusOptions} name="status" />
                 <Button
                   type="submit"
                   className="w-full bg-blue-600 text-white hover:bg-blue-700"

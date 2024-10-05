@@ -1,4 +1,5 @@
 <!-- ### Live site : https://ultimate-tripz-next.vercel.app/ -->
+<!-- ### Live site netlify : https://ultimate-tripz.netlify.app/ -->
 
 # Ultimate Tripz - Travel Tips & Destination Guides Platform
 
@@ -6,7 +7,7 @@ A platform for travel enthusiasts to share their travel stories, tips, and guide
 
 ## Live URL
 
-> [Ultimate Tripz](https://ultimate-tripz-next.vercel.app)
+> [Ultimate Tripz](https://ultimate-tripz.netlify.app)
 
 ### Credentials
 

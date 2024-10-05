@@ -19,6 +19,7 @@ export interface TPostDetails {
   title: string;
   content: string;
   images: string[];
+  cover: string;
   tags: string;
   upVotes: string[];
   downVotes: any[];
@@ -26,6 +27,7 @@ export interface TPostDetails {
   author: TPostDetailsAuthor;
   category: string;
   comments: any[];
+  isActive: boolean;
   createdAt: string;
   updatedAt: string;
   __v: number;

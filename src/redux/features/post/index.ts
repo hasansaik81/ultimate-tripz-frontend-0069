@@ -30,11 +30,14 @@ const postApi = baseApi.injectEndpoints({
       invalidatesTags: ["Post"],
     }),
     updatePost: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/post/update-post/${id}`,
-        method: "POST",
-        body: data,
-      }),
+      query: ({ id, data }) => {
+        console.log(id, data);
+        return {
+          url: `/post/update-post/${id}`,
+          method: "PUT",
+          body: data,
+        };
+      },
       invalidatesTags: ["Post"],
     }),
   }),
