@@ -10,7 +10,11 @@ const adminApi = baseApi.injectEndpoints({
       query: () => "/post/all-active-inactive-posts",
       providesTags: ["Post"],
     }),
+    getStatistics: builder.query({
+      query: () => "/statistics",
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useGetPostsQuery } = adminApi;
+export const { useGetUsersQuery, useGetPostsQuery, useGetStatisticsQuery } =
+  adminApi;
