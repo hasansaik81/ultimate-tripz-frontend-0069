@@ -27,7 +27,7 @@ const UpVote = ({ votes, id }: TVoteProps) => {
       onClick={() => handleUpVote(id)}
       className="flex items-center justify-center gap-2 p-2 w-full"
     >
-      <FaAnglesUp /> {votes.length}
+      <FaAnglesUp /> {votes?.length}
     </button>
   );
 };

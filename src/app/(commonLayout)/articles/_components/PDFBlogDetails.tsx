@@ -23,10 +23,10 @@ const PDFBlogDetails = ({ postInfo }: { postInfo: TPostDetails }) => {
           <h2 className="text-2xl font-bold">{postInfo?.title}</h2>
           <div className="flex items-center gap-5">
             <p className="flex items-center gap-x-2">
-              <LiaUserEditSolid /> {postInfo.author.name}
+              <LiaUserEditSolid /> {postInfo?.author?.name}
             </p>
             <p className="flex items-center gap-x-2">
-              <IoIosTimer /> {formatDateTime(postInfo.createdAt)}
+              <IoIosTimer /> {formatDateTime(postInfo?.createdAt)}
             </p>
           </div>
           <div

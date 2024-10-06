@@ -24,7 +24,7 @@ const DownVote = ({ votes, id }: TVoteProps) => {
       onClick={() => handleDownVote(id)}
       className="flex items-center justify-center w-full gap-2 p-2"
     >
-      <FaAnglesDown /> {votes.length}
+      <FaAnglesDown /> {votes?.length}
     </button>
   );
 };

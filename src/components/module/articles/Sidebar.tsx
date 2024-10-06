@@ -8,6 +8,7 @@ import { FaAnglesUp } from "react-icons/fa6";
 import { LiaUserEditSolid } from "react-icons/lia";
 import Subscribe from "../../actions/Subscribe";
 import { useEffect, useState } from "react";
+import SidebarLoading from "../../loading/SidebarLoading";
 
 const Sidebar = () => {
   const { data, isLoading } = useGetPopularPostsQuery("");
@@ -59,9 +60,9 @@ const Sidebar = () => {
           </p>
           <div className="space-y-3">
             {isLoading ? (
-              <p>Loading...</p>
+              <SidebarLoading />
             ) : (
-              data.data.map((item: TPopularPost) => {
+              data?.data?.map((item: TPopularPost) => {
                 return (
                   <div key={item._id}>
                     <Link

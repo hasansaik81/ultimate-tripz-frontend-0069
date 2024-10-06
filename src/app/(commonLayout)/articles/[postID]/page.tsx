@@ -22,9 +22,11 @@ import { useAppSelector } from "@/src/redux/hooks";
 import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
 import { FiEdit3 } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import CustomModal from "@/src/components/ui/CustomModal";
 import PDFBlogDetails from "../_components/PDFBlogDetails";
+import ErrorBoundary from "@/src/components/ErrorBoundary";
+import BlogDetailsLoading from "@/src/components/loading/BlogDetailsLoading";
 
 type TPostComment = {
   feedback: string;
@@ -36,7 +38,7 @@ interface TProps {
 }
 const PostDetails = ({ params }: TProps) => {
   const id = params.postID;
-  const { data, isLoading } = useGetPostDetailsQuery(id);
+  const { data } = useGetPostDetailsQuery(id);
   const postInfo = data?.data as TPostDetails;
   const { data: allComments } = useGetCommentsByPostIdQuery(id);
   const [createComment] = usePostCommentMutation();
@@ -93,20 +95,22 @@ const PostDetails = ({ params }: TProps) => {
       console.log(error);
     }
   };
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+
   return (
     <div className="py-10">
       {/* pdf div */}
-      <PDFBlogDetails postInfo={postInfo} />
+      <ErrorBoundary fallback={<p>Error</p>}>
+        <Suspense fallback={<BlogDetailsLoading />}>
+          <PDFBlogDetails postInfo={postInfo} />
+        </Suspense>
+      </ErrorBoundary>
       <div className="">
         <div className="lg:w-[50%] mt-5">
           <div className="lg:w-1/2 flex items-center gap-x-5">
-            <UpVote votes={postInfo.upVotes} id={postInfo._id} />{" "}
-            <DownVote votes={postInfo.downVotes} id={postInfo._id} />
+            <UpVote votes={postInfo?.upVotes} id={postInfo?._id} />{" "}
+            <DownVote votes={postInfo?.downVotes} id={postInfo?._id} />
             <p className="flex items-center w-full justify-center gap-2 p-2">
-              <FaRegCommentAlt /> {postInfo.commentsCount}
+              <FaRegCommentAlt /> {postInfo?.commentsCount}
             </p>
           </div>
           <div className="py-10">
@@ -132,17 +136,17 @@ const PostDetails = ({ params }: TProps) => {
                   <div className="flex justify-between items-start">
                     <div className="flex items-center gap-5 mb-4">
                       <Image
-                        src={item.userId.avatar}
+                        src={item?.userId.avatar}
                         height={80}
                         width={80}
-                        alt={item.userId.name}
+                        alt={item?.userId.name}
                         className="rounded-full size-[40px] object-cover"
                       />
                       <div>
-                        <Link href={item.userId._id} className="font-bold">
+                        <Link href={item?.userId._id} className="font-bold">
                           {item?.userId.name}
                         </Link>
-                        <p>{formatDateTime(item.createdAt)}</p>
+                        <p>{formatDateTime(item?.createdAt)}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -159,7 +163,7 @@ const PostDetails = ({ params }: TProps) => {
                       <Button
                         isIconOnly
                         onClick={() => {
-                          setCommentId(item._id);
+                          setCommentId(item?._id);
                           setIsDeleteModalOpen(true);
                         }}
                         className="custom-btn"
