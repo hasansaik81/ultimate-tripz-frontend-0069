@@ -28,7 +28,7 @@ const menuItems = [
   "Log Out",
 ];
 
-const links = [
+export const links = [
   {
     title: "About us",
     href: "/about-us",

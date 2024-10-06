@@ -26,7 +26,6 @@ const page = ({ searchParams }: any) => {
           <Sidebar />
         </div>
       </div>
-      {/* <p className="text-5xl">Footer</p> */}
     </div>
   );
 };
