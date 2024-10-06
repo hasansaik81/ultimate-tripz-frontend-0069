@@ -8,6 +8,8 @@ import Link from "next/link";
 import { formatDateTime } from "@/src/utils/date";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import Follow from "../actions/Follow";
+import DeletePost from "./DeletePost";
+import EditPost from "./EditPost";
 
 type TPostCard = {
   data: TPost[];
@@ -41,7 +43,11 @@ const PostCard = ({ data, profile = false }: TPostCard) => {
                       <p>{formatDateTime(item.createdAt)}</p>
                     </div>
                   </div>
-                  <Follow author={item.author} />
+                  {/* <Follow author={item.author} /> */}
+                  <div className="flex items-center gap-3">
+                    <DeletePost id={item._id} />
+                    <EditPost />
+                  </div>
                 </div>
               )}
               <Link href={`/articles/${item._id}`} className="relative">
