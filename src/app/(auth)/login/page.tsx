@@ -29,6 +29,7 @@ const LoginPage = () => {
       user.name = res.data.name;
       user.avatar = res.data.avatar;
       dispatch(setUser({ user: user, token: res.token }));
+      localStorage.setItem("token", res.token);
       toast.success("Logged in", { id: toastId, duration: 2000 });
       router.push("/");
     } catch (error) {

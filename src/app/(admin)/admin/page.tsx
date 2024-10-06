@@ -1,5 +1,4 @@
 import CustomBarChart from "@/src/components/ui/CustomBarChart";
-
 const page = async () => {
   const res = await fetch("https://ultimate-tripz.vercel.app/api/statistics");
   const data = await res.json();

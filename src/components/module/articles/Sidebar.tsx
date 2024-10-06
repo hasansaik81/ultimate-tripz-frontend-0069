@@ -7,15 +7,24 @@ import Link from "next/link";
 import { FaAnglesUp } from "react-icons/fa6";
 import { LiaUserEditSolid } from "react-icons/lia";
 import Subscribe from "../../actions/Subscribe";
+import { useEffect, useState } from "react";
 
 const Sidebar = () => {
   const { data, isLoading } = useGetPopularPostsQuery("");
   const user = useAppSelector(useCurrentUser) as TUser;
+
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure client-only rendering happens
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
-    <div className="sticky top-[84px] ">
-      <div className="">
+    <div className="sticky top-[84px]">
+      <div>
         <div className="space-y-2 border rounded-xl p-4">
-          {user?.status === "basic" || !user ? (
+          {isClient && (user?.status === "basic" || !user) ? (
             <div>
               <p className="text-2xl font-bold">Subscribe to Premium</p>
               <p className="font-medium mt-2 mb-3">
@@ -25,6 +34,7 @@ const Sidebar = () => {
               <Subscribe title="Subscribe" />
             </div>
           ) : (
+            isClient &&
             user?.status === "premium" && (
               <div>
                 <p className="text-2xl font-bold text-green-500">

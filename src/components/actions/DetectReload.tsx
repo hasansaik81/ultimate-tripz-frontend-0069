@@ -6,6 +6,7 @@ import {
   useCurrentUser,
 } from "@/src/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks";
+// import { getCurrentUser } from "@/src/utils/getCurrentUser";
 import { verifyToken } from "@/src/utils/VerifyToken";
 import { useEffect } from "react";
 
