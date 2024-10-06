@@ -1,4 +1,7 @@
+import ErrorBoundary from "@/src/components/ErrorBoundary";
 import CustomBarChart from "@/src/components/ui/CustomBarChart";
+import Loader from "@/src/components/ui/Loader";
+import { Suspense } from "react";
 const page = async () => {
   const res = await fetch("https://ultimate-tripz.vercel.app/api/statistics");
   const data = await res.json();
@@ -26,7 +29,11 @@ const page = async () => {
         <h1 className="text-3xl font-bold">Dashboard</h1>
         <p className="text-gray-600 dark:text-slate-50">View and statistics.</p>
       </div>
-      <CustomBarChart labels={labels} datasets={datasets} />
+      <ErrorBoundary fallback={<p>Error</p>}>
+        <Suspense fallback={<Loader />}>
+          <CustomBarChart labels={labels} datasets={datasets} />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

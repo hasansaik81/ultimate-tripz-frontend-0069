@@ -1,4 +1,7 @@
+import ErrorBoundary from "@/src/components/ErrorBoundary";
 import UserInformation from "./_components/UserInformation";
+import { Suspense } from "react";
+import Loader from "@/src/components/ui/Loader";
 
 type TProps = {
   params: any;
@@ -9,7 +12,11 @@ const DynamicProfile = ({ params }: TProps) => {
 
   return (
     <>
-      <UserInformation userId={userId} />
+      <ErrorBoundary fallback={<p>Error</p>}>
+        <Suspense fallback={<Loader />}>
+          <UserInformation userId={userId} />
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 };
