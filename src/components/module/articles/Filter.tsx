@@ -46,35 +46,37 @@ const Filter = () => {
   };
 
   return (
-    <div className="flex justify-between items-center pb-10 mt-5 gap-5">
-      <Select
-        closeOnScroll
-        className="dropdown-filter react-dropdown-select-custom-style"
-        placeholder="Sort"
-        options={sortOptions}
-        onChange={(values) => handleSort("sort", values[0].value)}
-        values={[]}
-      />
-      <Select
-        closeOnScroll
-        className="dropdown-filter react-dropdown-select-custom-style"
-        placeholder="Select category"
-        options={categoryOptions}
-        onChange={(values) => handleSort("category", values[0].value)}
-        values={[]}
-      />
-      <Select
-        closeOnScroll
-        className="dropdown-filter react-dropdown-select-custom-style"
-        placeholder="Select tag"
-        options={tagOptions}
-        onChange={(values) => handleSort("tag", values[0].value)}
-        values={[]}
-      />
+    <div className="pb-10 mt-5">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-5 mb-5 place-items-stretch">
+        <Select
+          closeOnScroll
+          className=" react-dropdown-select-custom-style"
+          placeholder="Sort"
+          options={sortOptions}
+          onChange={(values) => handleSort("sort", values[0].value)}
+          values={[]}
+        />
+        <Select
+          closeOnScroll
+          className=" react-dropdown-select-custom-style"
+          placeholder="Select category"
+          options={categoryOptions}
+          onChange={(values) => handleSort("category", values[0].value)}
+          values={[]}
+        />
+        <Select
+          closeOnScroll
+          className=" react-dropdown-select-custom-style"
+          placeholder="Select tag"
+          options={tagOptions}
+          onChange={(values) => handleSort("tag", values[0].value)}
+          values={[]}
+        />
+      </div>
       <input
         onChange={(e) => handleSort("searchTerm", e.target.value)}
         type="text"
-        placeholder="Query"
+        placeholder="Search here..."
         className="h-[35px] px-3 w-full border focus-visible:outline-none"
       />
     </div>

@@ -20,13 +20,14 @@ type TPostCard = {
 const PostCard = ({ data, editingSystem = false }: TPostCard) => {
   return (
     <div>
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 gap-10">
         {data?.map((item: TPost) => {
           return (
             <div
               key={item._id}
               className=" bg-slate-100 dark:bg-primary-dark rounded-xl h-fit"
             >
+              {/* header */}
               <div className="p-4 flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <Image
@@ -60,9 +61,9 @@ const PostCard = ({ data, editingSystem = false }: TPostCard) => {
                   <Image
                     src={item?.cover}
                     alt="cover"
-                    height={300}
-                    width={400}
-                    className="object-cover w-full h-[260px]"
+                    height={400}
+                    width={600}
+                    className="object-cover w-full h-[400px]"
                   />
                 ) : (
                   item?.images && (

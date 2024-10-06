@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <div className="">
       <CustomNavbar />
-      {children}
+      <div className="lg:px-40 px-4">{children}</div>
     </div>
   );
 }

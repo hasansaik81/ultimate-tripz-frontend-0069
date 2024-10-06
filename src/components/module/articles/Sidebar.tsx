@@ -61,9 +61,9 @@ const Sidebar = () => {
                       href={`/articles/${item._id}`}
                       className="font-semibold"
                     >
-                      {item.title}
+                      {item.title.slice(0, 40)}...
                     </Link>
-                    <p>{item.content.slice(0, 40)}...</p>
+                    <p>{item.content.slice(0, 70)}...</p>
                     <div className="flex items-center justify-between">
                       <p className="flex items-center gap-2">
                         <FaAnglesUp /> {item.upVotes.length}

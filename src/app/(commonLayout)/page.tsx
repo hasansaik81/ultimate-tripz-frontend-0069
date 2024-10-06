@@ -15,13 +15,13 @@ const page = ({ searchParams }: any) => {
   };
 
   return (
-    <div className="flex gap-10">
-      <div className="w-[70%]">
+    <div className="flex lg:flex-row flex-col gap-10">
+      <div className="lg:w-[60%]">
         <CreatePost />
         <Filter />
         <Blogs queryParams={queryParams} />
       </div>
-      <div className="w-[30%]">
+      <div className="lg:w-[40%]">
         <Sidebar />
       </div>
     </div>

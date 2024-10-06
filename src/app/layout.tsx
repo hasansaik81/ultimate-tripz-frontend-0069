@@ -49,7 +49,7 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <main className="container mx-auto max-w-7xl">
+          <main className="container mx-auto max-w-[1920px]">
             {children}
             <DetectReload />
           </main>
