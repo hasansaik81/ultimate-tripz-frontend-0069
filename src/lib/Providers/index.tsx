@@ -8,6 +8,7 @@ import { ThemeProviderProps } from "next-themes/dist/types";
 import { Toaster } from "sonner";
 import { Provider } from "react-redux";
 import { store } from "@/src/redux/store";
+import "aos/dist/aos.css";
 
 export interface ProvidersProps {
   children: React.ReactNode;

@@ -10,6 +10,8 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import Follow from "../actions/Follow";
 import DeletePost from "./DeletePost";
 import EditPost from "./EditPost";
+import { useEffect } from "react";
+import AOS from "aos";
 
 type TPostCard = {
   data: TPost[];
@@ -18,12 +20,21 @@ type TPostCard = {
 };
 
 const PostCard = ({ data, editingSystem = false }: TPostCard) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 600, // Animation duration
+      easing: "ease-in-out", // Animation easing
+      once: false, // Whether animation should happen only once
+      mirror: true, // Whether elements should animate out while scrolling past them
+    });
+  }, []);
   return (
     <div>
       <div className="grid grid-cols-1 gap-10">
         {data?.map((item: TPost) => {
           return (
             <div
+              data-aos="fade-up"
               key={item._id}
               className=" bg-white dark:bg-dark-100 rounded-xl h-fit"
             >
