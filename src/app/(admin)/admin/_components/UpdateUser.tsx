@@ -65,7 +65,8 @@ const UpdateUser = ({ userId }: { userId: string }) => {
                 <Dropdown options={statusOptions} name="status" />
                 <Button
                   type="submit"
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700"
+                  fullWidth
+                  className="custom-btn-secondary"
                 >
                   Update
                 </Button>

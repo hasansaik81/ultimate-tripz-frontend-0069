@@ -25,7 +25,7 @@ const PostCard = ({ data, editingSystem = false }: TPostCard) => {
           return (
             <div
               key={item._id}
-              className=" bg-slate-100 dark:bg-primary-dark rounded-xl h-fit"
+              className=" bg-white dark:bg-dark-100 rounded-xl h-fit"
             >
               {/* header */}
               <div className="p-4 flex items-start justify-between">
@@ -53,7 +53,10 @@ const PostCard = ({ data, editingSystem = false }: TPostCard) => {
                     <EditPost postDetails={item} />
                   </div>
                 ) : (
-                  <Follow author={item.author} />
+                  <Follow
+                    author={item.author}
+                    className="custom-btn-secondary"
+                  />
                 )}
               </div>
               <Link href={`/articles/${item._id}`} className="relative">
@@ -82,7 +85,7 @@ const PostCard = ({ data, editingSystem = false }: TPostCard) => {
                   </p>
                 )}
               </Link>
-              <div className="p-4">
+              <div className="p-4 space-y-2">
                 <Link
                   href={`/articles/${item._id}`}
                   className="text-lg font-semibold"

@@ -12,7 +12,9 @@ const PDFBlogDetails = ({ postInfo }: { postInfo: TPostDetails }) => {
 
   return (
     <div>
-      <Button onClick={() => toPDF()}>Download PDF</Button>
+      <Button className="custom-btn" onClick={() => toPDF()}>
+        Download PDF
+      </Button>
       <div
         ref={targetRef}
         className="flex lg:flex-row flex-col gap-y-5 gap-x-10 mt-4"

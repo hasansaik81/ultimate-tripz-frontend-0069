@@ -75,8 +75,9 @@ const UpdateBlog = ({ postId }: { postId: string }) => {
               <Form className="space-y-5 mb-4">
                 <Dropdown options={statusOptions} name="status" />
                 <Button
+                  fullWidth
                   type="submit"
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700"
+                  className="custom-btn-secondary"
                 >
                   Update
                 </Button>

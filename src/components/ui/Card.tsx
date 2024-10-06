@@ -15,10 +15,7 @@ type TProps = {
 
 const Card = ({ blog, profile }: TProps) => {
   return (
-    <div
-      key={blog._id}
-      className=" bg-slate-100 dark:bg-primary-dark rounded-xl h-fit"
-    >
+    <div key={blog._id} className=" bg-slate-100 dark:bg-dark rounded-xl h-fit">
       {!profile && (
         <div className="p-4 flex items-start justify-between">
           <div className="flex items-center gap-3">

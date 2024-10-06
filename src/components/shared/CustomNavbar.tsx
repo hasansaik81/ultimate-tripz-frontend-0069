@@ -46,7 +46,7 @@ export const links = [
   },
   {
     title: "Dashboard",
-    href: "/admin",
+    href: "/admin/users",
     secure: true,
   },
 ];
@@ -76,7 +76,7 @@ const CustomNavbar = () => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="dark:bg-primary-dark"
+      className="dark:bg-dark bg-secondary-700"
     >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
@@ -86,16 +86,16 @@ const CustomNavbar = () => {
 
       <NavbarContent className="sm:hidden pr-3" justify="start">
         <NavbarBrand>
-          <Link href="/" className="font-bold text-inherit">
-            Ultimate Tripz
+          <Link href="/" className="font-semibold text-secondary text-xl">
+            Ultimate <span className="text-primary ms-1">Tripz</span>
           </Link>
         </NavbarBrand>
       </NavbarContent>
       {/* large */}
       <NavbarContent className="hidden sm:flex gap-4" justify="start">
         <NavbarBrand>
-          <Link href="/" className="font-bold text-inherit">
-            Ultimate Tripz
+          <Link href="/" className="font-semibold text-secondary text-xl">
+            Ultimate <span className="text-primary ms-1">Tripz</span>
           </Link>
         </NavbarBrand>
       </NavbarContent>
@@ -119,7 +119,9 @@ const CustomNavbar = () => {
           </NavbarItem>
         ) : (
           <NavbarItem className="hidden lg:flex">
-            <Button onClick={handleLogout}>Logout</Button>
+            <Button className="custom-btn" onClick={handleLogout}>
+              Logout
+            </Button>
           </NavbarItem>
         )}
         <NavbarItem className="hidden lg:flex">

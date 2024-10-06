@@ -115,7 +115,9 @@ const PostDetails = ({ params }: TProps) => {
                 <p className="text-xl font-bold">Share your opinion</p>
                 <Textarea name="feedback" />
                 <div className="flex justify-end">
-                  <Button type="submit">Post</Button>
+                  <Button className="custom-btn" type="submit">
+                    Post
+                  </Button>
                 </div>
               </Form>
             </Formik>
@@ -125,7 +127,7 @@ const PostDetails = ({ params }: TProps) => {
               return (
                 <div
                   key={item?._id}
-                  className="border rounded-xl p-5 dark:bg-slate-900 bg-white"
+                  className="border rounded-xl p-5 dark:bg-dark-100 bg-secondary-700"
                 >
                   <div className="flex justify-between items-start">
                     <div className="flex items-center gap-5 mb-4">
@@ -150,7 +152,7 @@ const PostDetails = ({ params }: TProps) => {
                           setIsEditModalOpen(true);
                         }}
                         isIconOnly
-                        className=""
+                        className="custom-btn-secondary"
                       >
                         <FiEdit3 className="text-lg" />
                       </Button>
@@ -160,7 +162,7 @@ const PostDetails = ({ params }: TProps) => {
                           setCommentId(item._id);
                           setIsDeleteModalOpen(true);
                         }}
-                        className=""
+                        className="custom-btn"
                       >
                         <MdDeleteOutline className="text-lg" />
                       </Button>

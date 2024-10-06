@@ -14,7 +14,9 @@ const Banner = () => {
           Discover hidden gems, unforgettable experiences, and insider tips from
           around the globe.
         </h2>
-        <Button radius="sm">Explore Articles</Button>
+        <Button className="custom-btn" radius="sm">
+          Explore Articles
+        </Button>
         <h3 className="font-medium">
           Connect with active travelers and gain real-time tips, advice, and
           insights from a global community.

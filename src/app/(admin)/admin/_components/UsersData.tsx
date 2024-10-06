@@ -1,17 +1,26 @@
 "use client";
 import { useGetUsersQuery } from "@/src/redux/features/admin";
 import { TErrorResponse, TUserDetails } from "@/src/types";
-import { Button } from "@nextui-org/button";
 import Image from "next/image";
 import { toast } from "sonner";
 import UpdateUser from "./UpdateUser";
+import { useAppDispatch } from "@/src/redux/hooks";
+import { logout } from "@/src/redux/features/auth/authSlice";
+import { useRouter } from "next/navigation";
 
 const UsersData = () => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const { data, error } = useGetUsersQuery("");
   const users = data?.data;
   if (error) {
+    console.log("error:", error);
     const err = error as TErrorResponse;
     toast.warning(err?.data?.message);
+    if (err?.status === 401) {
+      dispatch(logout());
+      router.push("/login");
+    }
   }
   return (
     <div className="">

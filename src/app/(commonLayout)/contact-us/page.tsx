@@ -21,28 +21,25 @@ const page = () => {
         <div className="mb-4">
           <label
             htmlFor="message"
-            className="block text-gray-700 dark:text-slate-100"
+            className="block text-dark dark:text-slate-100"
           >
             Message
           </label>
           <textarea
             id="message"
-            className="border rounded-lg w-full p-2 mt-2"
+            className="border rounded-lg w-full p-2 mt-2 bg-[#f7f7f8] dark:bg-dark-100 border-0"
             rows={4}
             required
+            placeholder="Message...!"
           ></textarea>
         </div>
-        <Button
-          fullWidth
-          type="submit"
-          className=" text-white rounded-lg px-4 py-2"
-        >
+        <Button fullWidth type="submit" className=" custom-btn">
           Send Message
         </Button>
       </form>
 
       {/* Support Highlight Section */}
-      <div className="bg-blue-100 dark:bg-dark-100 py-10 mt-10">
+      <div className="bg-secondary-700 dark:bg-dark-100 py-10 mt-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-gray-800 dark:text-slate-50 mb-4">
             Why Our Support is the Best
@@ -54,7 +51,7 @@ const page = () => {
           </p>
           <div className="flex justify-center gap-10">
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-2xl font-semibold text-gray-800">
+              <h3 className="text-2xl font-semibold text-primary">
                 24/7 Availability
               </h3>
               <p className="text-gray-600">
@@ -62,7 +59,7 @@ const page = () => {
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-2xl font-semibold text-gray-800">
+              <h3 className="text-2xl font-semibold text-primary">
                 Expert Guidance
               </h3>
               <p className="text-gray-600">
@@ -71,7 +68,7 @@ const page = () => {
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-2xl font-semibold text-gray-800">
+              <h3 className="text-2xl font-semibold text-primary">
                 Customer Satisfaction
               </h3>
               <p className="text-gray-600">

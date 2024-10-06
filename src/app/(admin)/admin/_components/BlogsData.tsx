@@ -1,16 +1,27 @@
 "use client";
-import { TPostDetails } from "@/src/types";
+import { TErrorResponse, TPostDetails } from "@/src/types";
 import { toast } from "sonner";
 import UpdateBlog from "./UpdateBlog";
 import { useGetPostsQuery } from "@/src/redux/features/admin";
+import { logout } from "@/src/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/src/redux/hooks";
+import { useRouter } from "next/navigation";
 
 const BlogsData = () => {
   const { data, error } = useGetPostsQuery("");
   const posts = data?.data; // Accessing posts array
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
   // Error handling
   if (error) {
-    toast.error("Failed to load posts");
+    console.log("error:", error);
+    const err = error as TErrorResponse;
+    toast.warning(err?.data?.message);
+    if (err?.status === 401) {
+      dispatch(logout());
+      router.push("/login");
+    }
   }
 
   return (

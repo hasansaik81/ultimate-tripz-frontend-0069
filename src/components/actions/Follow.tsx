@@ -8,9 +8,10 @@ import { toast } from "sonner";
 
 type TProps = {
   author: TPostAuthor;
+  className?: string;
 };
 
-const Follow = ({ author }: TProps) => {
+const Follow = ({ author, className }: TProps) => {
   const user = useAppSelector(useCurrentUser) as TUser | null;
   const isFollowing = user ? author?.followers?.includes(user.id) : false;
   const [followNow] = useFollowMutation();
@@ -41,7 +42,7 @@ const Follow = ({ author }: TProps) => {
   return (
     <div>
       {user && user.id !== author._id && (
-        <Button onClick={handleFollow}>
+        <Button onClick={handleFollow} className={className}>
           {isFollowing ? "Unfollow" : "Follow"}
         </Button>
       )}

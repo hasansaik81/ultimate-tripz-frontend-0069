@@ -24,7 +24,7 @@ const CreatePost = () => {
     <>
       {!user ? (
         <div className="pt-4 text-center">
-          <p className="text-lg font-medium">
+          <p className="text-lg font-medium text-primary">
             Please <Link href="/login">log in</Link> to share your thoughts.
           </p>
         </div>

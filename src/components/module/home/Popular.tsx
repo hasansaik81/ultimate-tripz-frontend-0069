@@ -55,7 +55,9 @@ const Popular = () => {
         })}
       </div>
       <div className="flex justify-center pt-5">
-        <Button radius="sm">Explore More Articles</Button>
+        <Button className="custom-btn" radius="sm">
+          Explore More Articles
+        </Button>
       </div>
     </div>
   );

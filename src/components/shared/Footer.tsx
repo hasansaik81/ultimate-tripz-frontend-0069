@@ -8,12 +8,12 @@ import { CiLinkedin } from "react-icons/ci";
 
 const Footer = () => {
   return (
-    <footer className="dark:bg-dark-100 text-white py-12 mt-20">
+    <footer className="dark:bg-dark-100 bg-secondary-700 text-dark dark:text-white py-12 mt-20">
       <div className="lg:px-40 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 lg:place-items-center ">
         {/* Section 1: About Us */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-yellow-400">Ultimate Tripz</h2>
-          <p className="text-sm text-gray-300">
+          <h2 className="text-2xl font-bold text-primary">Ultimate Tripz</h2>
+          <p className="text-sm text-dark dark:text-white">
             Welcome to Ultimate Tripz! We are a community of passionate
             travelers sharing tips, guides, and personal stories to help you
             plan unforgettable journeys. Discover new destinations, and connect
@@ -23,8 +23,8 @@ const Footer = () => {
 
         {/* Section 2: Quick Links */}
         <div className="space-y-4">
-          <h2 className="text-lg font-bold text-yellow-400">Quick Links</h2>
-          <ul className="space-y-2 text-sm text-gray-300">
+          <h2 className="text-lg font-bold text-primary">Quick Links</h2>
+          <ul className="space-y-2 text-sm text-dark dark:text-white">
             {links?.map((item, index) => {
               return (
                 <li key={index}>
@@ -37,8 +37,8 @@ const Footer = () => {
 
         {/* Section 3: Stay Connected */}
         <div className="space-y-4">
-          <h2 className="text-lg font-bold text-yellow-400">Stay Connected</h2>
-          <p className="text-sm text-gray-300">
+          <h2 className="text-lg font-bold text-primary">Stay Connected</h2>
+          <p className="text-sm text-dark dark:text-white">
             Follow us on social media and never miss an update!
           </p>
           <div className="flex space-x-4 text-3xl">
@@ -50,7 +50,7 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-400">
+      <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-dark dark:text-white">
         <p>&copy; 2024 Ultimate Tripz. All Rights Reserved.</p>
       </div>
     </footer>

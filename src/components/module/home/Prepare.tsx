@@ -23,7 +23,9 @@ const Prepare = () => {
           elevate your adventures with ease.
         </p>
         <div>
-          <Button radius="sm">Search Places</Button>
+          <Button className="custom-btn mt-5" radius="sm">
+            Search Places
+          </Button>
         </div>
       </div>
     </div>
