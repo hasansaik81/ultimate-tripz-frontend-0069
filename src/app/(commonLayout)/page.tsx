@@ -15,15 +15,18 @@ const page = ({ searchParams }: any) => {
   };
 
   return (
-    <div className="flex lg:flex-row flex-col gap-10">
-      <div className="lg:w-[60%]">
-        <CreatePost />
-        <Filter />
-        <Blogs queryParams={queryParams} />
+    <div>
+      <div className="flex lg:flex-row flex-col gap-10">
+        <div className="lg:w-[60%]">
+          <CreatePost />
+          <Filter />
+          <Blogs queryParams={queryParams} />
+        </div>
+        <div className="lg:w-[40%]">
+          <Sidebar />
+        </div>
       </div>
-      <div className="lg:w-[40%]">
-        <Sidebar />
-      </div>
+      {/* <p className="text-5xl">Footer</p> */}
     </div>
   );
 };

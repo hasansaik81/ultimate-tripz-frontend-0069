@@ -20,7 +20,7 @@ const UserData = () => {
   return (
     <div>
       <Cover userDetails={userDetails} />
-      <div className="mt-[125px] px-10 py-5 space-y-5">
+      <div className="lg:mt-[125px] lg:px-10 lg:py-5 px-4 py-4 space-y-5">
         <div className="flex items-center gap-5">
           <p className="text-2xl font-bold">{userDetails?.name}</p>
           <button className="flex items-center gap-2 border rounded-xl px-3">
@@ -39,7 +39,7 @@ const UserData = () => {
           </button>
         </div>
         <hr />
-        <div>
+        <div className="lg:w-1/2 lg:mx-auto">
           <p className="text-xl font-bold mb-5">All posts</p>
           <PostCard data={userAllPosts} editingSystem={true} />
         </div>

@@ -3,7 +3,7 @@ import { Input } from "@nextui-org/input";
 
 const page = () => {
   return (
-    <div className="px-4 py-10 dark:bg-dark">
+    <div className="px-4 py-10">
       <h1 className="text-3xl font-bold text-center mb-8">Contact Us</h1>
       <p className="text-lg text-center mb-6">
         We&apos;d love to hear from you! Please reach out with any questions or
@@ -15,7 +15,7 @@ const page = () => {
         <div className="mb-4">
           <Input type="text" label="Name" />
         </div>
-        <div className="mb-4">
+        <div className="mb-3">
           <Input type="email" label="Email" />
         </div>
         <div className="mb-4">
@@ -27,7 +27,7 @@ const page = () => {
           </label>
           <textarea
             id="message"
-            className="border rounded-lg w-full p-2"
+            className="border rounded-lg w-full p-2 mt-2"
             rows={4}
             required
           ></textarea>

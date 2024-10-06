@@ -3,8 +3,8 @@ import { Button } from "@nextui-org/button";
 import Image from "next/image";
 const Prepare = () => {
   return (
-    <div className="flex gap-x-16">
-      <div className="w-[40%]">
+    <div className="flex lg:flex-row flex-col gap-x-16">
+      <div className="lg:w-[40%]">
         <Image
           src={sectionImg}
           alt="banner"
@@ -13,10 +13,8 @@ const Prepare = () => {
           className="rounded-2xl w-full h-full object-cover"
         />
       </div>
-      <div className="w-[60%] flex flex-col justify-between">
-        <h2 className="text-5xl font-bold leading-[72px]">
-          Prepare yourself to see the world with us
-        </h2>
+      <div className="lg:w-[60%] flex flex-col justify-between">
+        <h2 className="heading">Prepare yourself to see the world with us</h2>
         <p>
           Unlock expert travel insights and tips to make your journeys smoother,
           smarter, and unforgettable. From hidden gems to must-know travel

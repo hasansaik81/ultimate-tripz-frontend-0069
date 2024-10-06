@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .heading {
-  @apply text-5xl font-bold leading-[72px];
+  @apply lg:text-5xl md:text-3xl text-2xl font-bold lg:leading-[72px];
 }
 .subHeading {
   @apply uppercase font-medium text-lg;

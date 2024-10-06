@@ -5,9 +5,9 @@ import b3Img from "@/src/assets/banner/b3.webp";
 
 const Banner = () => {
   return (
-    <div className="flex gap-x-10 py-10 items-center">
-      <div className="w-[50%] space-y-5">
-        <h1 className="text-6xl font-bold">
+    <div className="flex lg:flex-row flex-col gap-y-10 lg:py-10 py-5 items-center">
+      <div className="lg:w-[50%] space-y-5">
+        <h1 className="text-5xl font-bold">
           Travel the world like never before and get better taste
         </h1>
         <h2 className="text-xl font-semibold">
@@ -20,7 +20,7 @@ const Banner = () => {
           insights from a global community.
         </h3>
       </div>
-      <div className="w-[50%]">
+      <div className="lg:w-[50%]">
         <div className="space-y-5">
           <div className="flex justify-end">
             <Image
@@ -28,7 +28,7 @@ const Banner = () => {
               alt="banner"
               height={400}
               width={400}
-              className="rounded-2xl w-[350px] h-full object-cover"
+              className="rounded-2xl lg:w-[350px] w-full h-full object-cover"
             />
           </div>
           <div className="">
@@ -37,7 +37,7 @@ const Banner = () => {
               alt="banner"
               height={300}
               width={300}
-              className="rounded-2xl w-[350px] h-full object-cover"
+              className="rounded-2xl lg:w-[350px] w-full h-full object-cover"
             />
           </div>
         </div>

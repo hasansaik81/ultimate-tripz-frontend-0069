@@ -13,7 +13,10 @@ const PDFBlogDetails = ({ postInfo }: { postInfo: TPostDetails }) => {
   return (
     <div>
       <Button onClick={() => toPDF()}>Download PDF</Button>
-      <div ref={targetRef} className="flex gap-x-10 mt-4">
+      <div
+        ref={targetRef}
+        className="flex lg:flex-row flex-col gap-y-5 gap-x-10 mt-4"
+      >
         <div className="lg:w-[65%]">
           <h2 className="text-2xl font-bold">{postInfo?.title}</h2>
           <div className="flex items-center gap-5">

@@ -24,7 +24,7 @@ const Cover = ({ userDetails }: TProps) => {
   const [isChangePhotoModalOpen, setIsChangePhotoModalOpen] = useState(false);
   const [updateUserPhoto] = useUpdateUserInfoMutation();
   const handleSubmit = async (values: TFormValues) => {
-    const toastId = toast.loading("Password Changing please wait!");
+    const toastId = toast.loading("Photo Changing please wait!");
     const formData = new FormData();
     if (values.avatar) {
       formData.append("avatar", values.avatar);
@@ -40,7 +40,6 @@ const Cover = ({ userDetails }: TProps) => {
         id: userDetails._id,
         data: formData,
       }).unwrap();
-      console.log("res:", res);
       if (res.success) {
         toast.success(res.message, { id: toastId, duration: 2000 });
       }
@@ -69,7 +68,7 @@ const Cover = ({ userDetails }: TProps) => {
         width={300}
         title="Change photo"
         onClick={() => setIsChangePhotoModalOpen(true)}
-        className="object-cover rounded-full size-[250px] border-2 absolute -bottom-[125px] left-10 cursor-pointer"
+        className="object-cover rounded-full size-[250px] border-2 absolute lg:-bottom-[125px] lg:left-10 left-20 bottom-20 cursor-pointer"
       />
       <EditProfile userData={userDetails} />
       <CustomModal

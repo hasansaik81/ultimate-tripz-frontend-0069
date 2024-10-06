@@ -35,7 +35,7 @@ const Popular = () => {
         <h3 className="subHeading">Most Popular</h3>
         <h2 className="heading">Explore top Articles</h2>
       </div>
-      <div className="grid grid-cols-3 gap-10 mt-10 mb-28">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-10 mt-10 lg:mb-10 mb-5">
         {articles.map((item, index) => {
           return (
             <div key={index} className="space-y-3">
@@ -44,7 +44,7 @@ const Popular = () => {
                 alt="popular-article"
                 height={400}
                 width={400}
-                className="rounded-2xl w-full h-full object-cover"
+                className="rounded-2xl w-full lg:h-[300px] object-cover"
               />
               <h3 className="text-xl font-semibold">
                 {item.title.slice(0, 35)}...

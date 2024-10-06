@@ -28,7 +28,7 @@ const EditProfile = ({ userData }: TProps) => {
     <div>
       <button
         onClick={() => setIsEditProfileModalOpen(true)}
-        className="absolute right-5 bottom-3 flex items-center gap-2 font-semibold"
+        className="absolute right-5 bottom-3 flex items-center gap-2 font-semibold border px-3 rounded-full dark:bg-slate-800 "
       >
         <FaRegEdit />
         Edit profile
