@@ -14,9 +14,10 @@ import EditPost from "./EditPost";
 type TPostCard = {
   data: TPost[];
   profile?: boolean;
+  editingSystem?: boolean;
 };
 
-const PostCard = ({ data, profile = false }: TPostCard) => {
+const PostCard = ({ data, editingSystem = false }: TPostCard) => {
   return (
     <div>
       <div className="grid grid-cols-2 gap-10">
@@ -26,43 +27,47 @@ const PostCard = ({ data, profile = false }: TPostCard) => {
               key={item._id}
               className=" bg-slate-100 dark:bg-primary-dark rounded-xl h-fit"
             >
-              {!profile && (
-                <div className="p-4 flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src={item?.author?.avatar}
-                      alt="author"
-                      height={80}
-                      width={80}
-                      className="size-[50px] object-cover rounded-full"
-                    />
-                    <div className="flex flex-col justify-between">
-                      <p className="text-lg font-semibold">
-                        {item.author.name}
-                      </p>
-                      <p>{formatDateTime(item.createdAt)}</p>
-                    </div>
-                  </div>
-                  {/* <Follow author={item.author} /> */}
-                  <div className="flex items-center gap-3">
-                    <DeletePost id={item._id} />
-                    <EditPost />
+              <div className="p-4 flex items-start justify-between">
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={item?.author?.avatar}
+                    alt="author"
+                    height={80}
+                    width={80}
+                    className="size-[50px] object-cover rounded-full"
+                  />
+                  <div className="flex flex-col justify-between">
+                    <Link
+                      href={`/profile/${item.author._id}`}
+                      className="text-lg font-semibold"
+                    >
+                      {item.author.name}
+                    </Link>
+                    <p>{formatDateTime(item.createdAt)}</p>
                   </div>
                 </div>
-              )}
+                {editingSystem ? (
+                  <div className="flex items-center gap-3">
+                    <DeletePost id={item._id} />
+                    <EditPost postDetails={item} />
+                  </div>
+                ) : (
+                  <Follow author={item.author} />
+                )}
+              </div>
               <Link href={`/articles/${item._id}`} className="relative">
-                {item?.images ? (
+                {item?.cover ? (
                   <Image
-                    src={item?.images[0]}
+                    src={item?.cover}
                     alt="cover"
                     height={300}
                     width={400}
                     className="object-cover w-full h-[260px]"
                   />
                 ) : (
-                  item?.cover && (
+                  item?.images && (
                     <Image
-                      src={item?.cover}
+                      src={item?.images[0]}
                       alt="cover"
                       height={300}
                       width={400}

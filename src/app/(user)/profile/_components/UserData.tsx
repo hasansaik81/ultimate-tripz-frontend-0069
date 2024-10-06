@@ -41,7 +41,7 @@ const UserData = () => {
         <hr />
         <div>
           <p className="text-xl font-bold mb-5">All posts</p>
-          <PostCard data={userAllPosts} profile={false} />
+          <PostCard data={userAllPosts} editingSystem={true} />
         </div>
       </div>
       <FollowingModal

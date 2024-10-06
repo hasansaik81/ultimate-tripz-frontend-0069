@@ -11,7 +11,7 @@ import { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { toast } from "sonner";
 
-const tagOptions = [
+export const tagOptions = [
   {
     value: "regular",
     name: "Regular",
@@ -21,7 +21,7 @@ const tagOptions = [
     name: "Premium",
   },
 ];
-const categoryOptions = [
+export const categoryOptions = [
   { value: "adventure", name: "Adventure" },
   { value: "eco-tourism", name: "Eco-tourism" },
   { value: "luxury", name: "Luxury" },
@@ -41,7 +41,7 @@ const initialValues: TFormValues = {
   category: "travel", // Default category
   image: null,
 };
-const validationSchema = Yup.object<TFormValues>({
+export const createPostValidationSchema = Yup.object<TFormValues>({
   title: Yup.string()
     .required("Title is required")
     .test("min-words", "Title must have at least 3 words", (value) => {
@@ -120,7 +120,7 @@ const CustomEditor = ({ authorId, onClose }: TProps) => {
     <div className="mb-5">
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={createPostValidationSchema}
         onSubmit={handleCreatePost}
       >
         {({ setFieldValue }) => {
