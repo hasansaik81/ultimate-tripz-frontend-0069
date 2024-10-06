@@ -15,6 +15,7 @@ const UserInformation = ({ userId }: any) => {
   const { data } = useGetUserInfoByIdQuery(userId);
   const userDetails = data?.data;
   const { data: userPosts } = useGetPostByAuthorQuery(userDetails?._id);
+  console.log("userPosts:", userPosts);
   const userAllPosts = userPosts?.data;
   return (
     <div>

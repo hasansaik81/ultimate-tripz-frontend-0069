@@ -40,7 +40,7 @@ const Follow = ({ author }: TProps) => {
 
   return (
     <div>
-      {user && (
+      {user && user.id !== author._id && (
         <Button onClick={handleFollow}>
           {isFollowing ? "Unfollow" : "Follow"}
         </Button>

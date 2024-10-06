@@ -9,6 +9,8 @@ import { Form, Formik } from "formik";
 import { Button } from "@nextui-org/button";
 import { toast } from "sonner";
 import { useUpdateUserInfoMutation } from "@/src/redux/features/user";
+import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
+import { useAppSelector } from "@/src/redux/hooks";
 type TFormValues = {
   avatar: File | null; // Allowing avatar to be either a File or null
 };
@@ -21,6 +23,7 @@ const initialValues: TFormValues = {
 };
 
 const Cover = ({ userDetails }: TProps) => {
+  const user = useAppSelector(useCurrentUser) as TUser;
   const [isChangePhotoModalOpen, setIsChangePhotoModalOpen] = useState(false);
   const [updateUserPhoto] = useUpdateUserInfoMutation();
   const handleSubmit = async (values: TFormValues) => {
@@ -70,7 +73,7 @@ const Cover = ({ userDetails }: TProps) => {
         onClick={() => setIsChangePhotoModalOpen(true)}
         className="object-cover rounded-full size-[250px] border-2 absolute lg:-bottom-[125px] lg:left-10 left-20 bottom-20 cursor-pointer"
       />
-      <EditProfile userData={userDetails} />
+      {user?.id === userDetails?._id && <EditProfile userData={userDetails} />}
       <CustomModal
         isOpen={isChangePhotoModalOpen}
         onClose={() => setIsChangePhotoModalOpen(false)}

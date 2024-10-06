@@ -31,7 +31,10 @@ const Sidebar = () => {
                 Subscribe to unlock new features and if eligible, receive a
                 share of ads revenue.
               </p>
-              <Subscribe title="Subscribe" />
+              <Subscribe
+                title="Subscribe"
+                className="border rounded-xl px-3 py-1"
+              />
             </div>
           ) : (
             isClient &&
@@ -49,8 +52,8 @@ const Sidebar = () => {
           )}
         </div>
         <div className="border p-4 rounded-xl mt-4">
-          <p className="text-xl font-bold mb-4">Popular Posts:</p>
-          <div className="space-y-4">
+          <p className="text-xl font-bold mb-2">Popular Posts:</p>
+          <div className="space-y-3">
             {isLoading ? (
               <p>Loading...</p>
             ) : (
