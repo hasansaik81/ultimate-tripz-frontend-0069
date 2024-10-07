@@ -16,6 +16,7 @@ const postApi = baseApi.injectEndpoints({
     }),
     getPostDetails: builder.query({
       query: (id) => `/post/single-post/${id}`,
+      providesTags: ["Vote", "Comment"],
     }),
     getPostByAuthor: builder.query({
       query: (id) => `/post/posts-by-author/${id}`,

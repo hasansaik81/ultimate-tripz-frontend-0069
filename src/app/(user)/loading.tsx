@@ -1,7 +1,9 @@
+import Loader from "@/src/components/ui/Loader";
+
 const loading = () => {
   return (
     <div>
-      <p>Hello, loading!</p>
+      <Loader />
     </div>
   );
 };

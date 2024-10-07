@@ -8,7 +8,7 @@ import {
   useUpdateCommentMutation,
 } from "@/src/redux/features/comment";
 import { useGetPostDetailsQuery } from "@/src/redux/features/post";
-import { TComment, TPostDetails } from "@/src/types";
+import { TComment, TErrorResponse, TPostDetails } from "@/src/types";
 import { formatDateTime } from "@/src/utils/date";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,6 +27,7 @@ import CustomModal from "@/src/components/ui/CustomModal";
 import PDFBlogDetails from "../_components/PDFBlogDetails";
 import ErrorBoundary from "@/src/components/ErrorBoundary";
 import BlogDetailsLoading from "@/src/components/loading/BlogDetailsLoading";
+import { toast } from "sonner";
 
 type TPostComment = {
   feedback: string;
@@ -52,6 +53,10 @@ const PostDetails = ({ params }: TProps) => {
   const user = useAppSelector(useCurrentUser) as TUser;
 
   const onSubmit = async (values: TPostComment) => {
+    if (!user) {
+      toast.warning("You need to login first!");
+    }
+    const toastId = toast.loading("Comment posting...!");
     const commentData = {
       postId: postInfo._id,
       userId: user.id,
@@ -62,11 +67,23 @@ const PostDetails = ({ params }: TProps) => {
         id: postInfo._id,
         commentInfo: commentData,
       }).unwrap();
+      if (res.success) {
+        toast.success(res.message, { id: toastId, duration: 2000 });
+      }
     } catch (error) {
-      console.log(error);
+      console.log("error:", error);
+      const err = error as TErrorResponse;
+      toast.error(err.data.errorMessages[0].message || "Something went wrong", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
   const handleUpdateComment = async (values: TPostComment) => {
+    if (!user) {
+      toast.warning("You need to login first!");
+    }
+    const toastId = toast.loading("Comment updating...!");
     if (!selectedComment) {
       return;
     }
@@ -76,23 +93,43 @@ const PostDetails = ({ params }: TProps) => {
       ...values,
     };
     try {
+      setIsEditModalOpen(false);
       const res = await updateComment({
         id: selectedComment._id,
         commentInfo: commentData,
       }).unwrap();
-      setIsEditModalOpen(false);
+      if (res.success) {
+        toast.success(res.message, { id: toastId, duration: 2000 });
+      }
     } catch (error) {
-      console.log(error);
+      console.log("error:", error);
       setIsEditModalOpen(false);
+      const err = error as TErrorResponse;
+      toast.error(err.data.errorMessages[0].message || "Something went wrong", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
   const handleCommentDelete = async (id: string) => {
+    if (!user) {
+      toast.warning("You need to login first!");
+    }
+    const toastId = toast.loading("Comment deleting...!");
     try {
-      const res = await deleteComment(id).unwrap();
       setIsDeleteModalOpen(false);
+      const res = await deleteComment(id).unwrap();
+      if (res.success) {
+        toast.success(res.message, { id: toastId, duration: 2000 });
+      }
     } catch (error) {
       setIsDeleteModalOpen(false);
       console.log(error);
+      const err = error as TErrorResponse;
+      toast.error(err.data.errorMessages[0].message || "Something went wrong", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
 
@@ -150,26 +187,30 @@ const PostDetails = ({ params }: TProps) => {
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
-                      <Button
-                        onClick={() => {
-                          setSelectComment(item);
-                          setIsEditModalOpen(true);
-                        }}
-                        isIconOnly
-                        className="custom-btn-secondary"
-                      >
-                        <FiEdit3 className="text-lg" />
-                      </Button>
-                      <Button
-                        isIconOnly
-                        onClick={() => {
-                          setCommentId(item?._id);
-                          setIsDeleteModalOpen(true);
-                        }}
-                        className="custom-btn"
-                      >
-                        <MdDeleteOutline className="text-lg" />
-                      </Button>
+                      {user && user.id === item.userId._id && (
+                        <>
+                          <Button
+                            onClick={() => {
+                              setSelectComment(item);
+                              setIsEditModalOpen(true);
+                            }}
+                            isIconOnly
+                            className="custom-btn-secondary"
+                          >
+                            <FiEdit3 className="text-lg" />
+                          </Button>
+                          <Button
+                            isIconOnly
+                            onClick={() => {
+                              setCommentId(item?._id);
+                              setIsDeleteModalOpen(true);
+                            }}
+                            className="custom-btn"
+                          >
+                            <MdDeleteOutline className="text-lg" />
+                          </Button>
+                        </>
+                      )}
                     </div>
                   </div>
                   <p>{item?.feedback}</p>
