@@ -14,7 +14,7 @@ const UpVote = ({ votes, id }: TVoteProps) => {
   const [createVote] = useUpvoteMutation();
 
   // Check if the current user has already upvoted
-  const hasVoted = user ? votes.includes(user.id) : false;
+  const hasVoted = user ? votes?.includes(user?.id) : false;
 
   const handleUpVote = async (id: string) => {
     if (!user) {

@@ -10,7 +10,7 @@ const DownVote = ({ votes, id }: TVoteProps) => {
   const user = useAppSelector(useCurrentUser) as TUser;
   const [createVote] = useDownvoteMutation();
 
-  const hasVoted = user ? votes.includes(user.id) : false;
+  const hasVoted = user ? votes?.includes(user?.id) : false;
 
   const handleDownVote = async (id: string) => {
     if (!user) {
