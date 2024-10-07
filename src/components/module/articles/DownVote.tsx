@@ -3,10 +3,17 @@ import { TVoteProps } from "./UpVote";
 import { toast } from "sonner";
 import { TErrorResponse } from "@/src/types";
 import { useDownvoteMutation } from "@/src/redux/features/vote";
+import { useAppSelector } from "@/src/redux/hooks";
+import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
 
 const DownVote = ({ votes, id }: TVoteProps) => {
+  const user = useAppSelector(useCurrentUser) as TUser;
   const [createVote] = useDownvoteMutation();
   const handleDownVote = async (id: string) => {
+    if (!user) {
+      toast.error("You need to log in first!");
+      return;
+    }
     const toastId = toast.loading("Down vote  posting");
     try {
       const res = await createVote(id).unwrap();

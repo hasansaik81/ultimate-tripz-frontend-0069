@@ -36,12 +36,21 @@ const PDFBlogDetails = ({ postInfo }: { postInfo: TPostDetails }) => {
           />
         </div>
         <div className="lg:w-[35%]">
-          <Image
-            src={postInfo?.images[0]}
-            height={600}
-            width={600}
-            alt={postInfo?.title}
-          />
+          {postInfo?.cover ? (
+            <Image
+              src={postInfo?.cover}
+              height={600}
+              width={600}
+              alt={postInfo?.title}
+            />
+          ) : (
+            <Image
+              src={postInfo?.images[0]}
+              height={600}
+              width={600}
+              alt={postInfo?.title}
+            />
+          )}
         </div>
       </div>
     </div>
