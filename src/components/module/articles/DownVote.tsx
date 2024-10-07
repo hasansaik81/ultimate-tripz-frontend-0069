@@ -9,6 +9,9 @@ import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
 const DownVote = ({ votes, id }: TVoteProps) => {
   const user = useAppSelector(useCurrentUser) as TUser;
   const [createVote] = useDownvoteMutation();
+
+  const hasVoted = user ? votes.includes(user.id) : false;
+
   const handleDownVote = async (id: string) => {
     if (!user) {
       toast.error("You need to log in first!");
@@ -31,7 +34,8 @@ const DownVote = ({ votes, id }: TVoteProps) => {
       onClick={() => handleDownVote(id)}
       className="flex items-center justify-center w-full gap-2 p-2"
     >
-      <FaAnglesDown /> {votes?.length}
+      <FaAnglesDown className={`${hasVoted ? "text-primary" : ""}`} />{" "}
+      {votes?.length}
     </button>
   );
 };

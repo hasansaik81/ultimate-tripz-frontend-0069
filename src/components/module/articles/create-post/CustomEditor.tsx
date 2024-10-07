@@ -10,6 +10,8 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { toast } from "sonner";
+import { useAppSelector } from "@/src/redux/hooks";
+import { TUser, useCurrentUser } from "@/src/redux/features/auth/authSlice";
 
 export const tagOptions = [
   {
@@ -83,6 +85,8 @@ const CustomEditor = ({ authorId, onClose }: TProps) => {
   const [content, setContent] = useState("");
   const [createPost] = useCreatePostMutation();
 
+  const user = useAppSelector(useCurrentUser) as TUser;
+
   const handleCreatePost = async (values: TFormValues) => {
     const toastId = toast.loading("Post creating!");
     try {
@@ -116,6 +120,11 @@ const CustomEditor = ({ authorId, onClose }: TProps) => {
     }
   };
 
+  const filteredTagOptions =
+    user?.status !== "premium"
+      ? tagOptions.filter((option) => option.value !== "premium")
+      : tagOptions;
+
   return (
     <div className="mb-5">
       <Formik
@@ -141,7 +150,7 @@ const CustomEditor = ({ authorId, onClose }: TProps) => {
                 component="p"
                 className="text-danger"
               />
-              <Dropdown options={tagOptions} name="tag" label="Tag" />
+              <Dropdown options={filteredTagOptions} name="tag" label="Tag" />
               <Dropdown
                 options={categoryOptions}
                 name="category"
