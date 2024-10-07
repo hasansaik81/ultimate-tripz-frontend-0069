@@ -180,7 +180,10 @@ const PostDetails = ({ params }: TProps) => {
                         className="rounded-full size-[40px] object-cover"
                       />
                       <div>
-                        <Link href={item?.userId._id} className="font-bold">
+                        <Link
+                          href={`/profile/${item?.userId._id}`}
+                          className="font-bold"
+                        >
                           {item?.userId.name}
                         </Link>
                         <p>{formatDateTime(item?.createdAt)}</p>
